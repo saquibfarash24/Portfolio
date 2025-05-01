@@ -18,7 +18,7 @@ function Home() {
       className="relative bg-cover bg-center bg-no-repeat bg-fixed text-white"
       style={{
         backgroundImage:
-          'url(public/codeimg.webp)',
+          'url(public/codeimg2.jpg)',
       }}
     >
       {/* Overlay for readability */}
