@@ -22,7 +22,7 @@ function Navbar() {
                 <div className="max-w-screen-2xl container mx-auto px-4 md:px-20 h-16 flex justify-between items-center">
                     {/* Logo */}
                     <div className="flex items-center space-x-2">
-                        <img src="/saqibimg.jpg" alt="Profile" className="h-10 w-10 rounded-full" />
+                        <img src="/img4.jpg" alt="Profile" className="h-10 w-10 rounded-full" />
                         <h1 className="text-xl md:text-2xl font-bold text-green-400">
                             SAQUIB<span className="text-red-500">.</span>
                         </h1>
