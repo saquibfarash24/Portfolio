@@ -8,7 +8,7 @@ import { DiMongodb } from 'react-icons/di';
 import { SiExpress } from 'react-icons/si';
 import { RiReactjsFill } from 'react-icons/ri';
 import { ReactTyped } from 'react-typed';
-import saqibimg from '../../public/saqibimg.jpg';
+import saqibimg from '../../public/img4.jpg';
 import { Link } from 'react-router-dom';
 
 function Home() {
@@ -18,7 +18,7 @@ function Home() {
       className="relative bg-cover bg-center bg-no-repeat bg-fixed text-white"
       style={{
         backgroundImage:
-          'url(public/codeimg2.jpg)',
+          'url(/codeimg2.jpg)',
       }}
     >
       {/* Overlay for readability */}

@@ -4,7 +4,7 @@ import { FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaTasks } from "react-icons/
 const workExperience = [
   {
     id: 1,
-    companyName: "Intern at AIZTS Infotech",
+    companyName: "Associate Engineer at AIZTS Infotech",
     startDate: "25/08/2024",
     endDate: "Present",
     location: "Pathruth Chowk, Solapur, Maharashtra",

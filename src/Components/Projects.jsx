@@ -6,7 +6,7 @@ const projects = [
     title: 'JOB-DEKHO USING MERN STACK',
     description:
       'A job search platform built using the MERN stack, with role-based access for recruiters and job seekers, job applications, and admin dashboards.',
-    image: 'public/jobdeko.png',
+    image: '/jobdeko.png',
     url: 'https://jobdekho.aiztsinfotech.com/',
     color: 'bg-blue-100',
   },
@@ -15,7 +15,7 @@ const projects = [
     description:
       'Tech Stack: Postgre SQL, Node, Express, React, HTML CSS JavaScript, Tailwind CSS',
     image:
-      'public/aizts.png',
+      '/aizts.png',
       url: 'https://aiztsinfotech.com/',
     color: 'bg-green-100',
   },
@@ -24,7 +24,7 @@ const projects = [
     description:
       'An interactive book manager where users can add, edit, and delete book entries with MongoDB and a clean React UI.',
     image:
-      'https://www.fexle.com/blogs/wp-content/uploads/2021/01/online-book-store-ap-1024x768.png',
+      '/chatapp.jpg',
     //url: 'https://aiztsinfotech.com/',
     color: 'bg-red-100',
   },
