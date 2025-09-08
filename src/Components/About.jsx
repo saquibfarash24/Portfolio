@@ -311,12 +311,12 @@ export default function About() {
           <h3 className="text-lg font-semibold mb-3"><FaGraduationCap className="inline mr-2" />Education</h3>
           <div className="text-sm text-base-content/80 space-y-3">
             <div>
-              <div className="font-medium">B.Sc. / B.Tech (placeholder)</div>
-              <div className="text-xs text-base-content/60">University · Year</div>
+              <div className="font-medium">BCA / MCA</div>
+              <div className="text-xs text-base-content/60">BHARTI VIDYAPEETH PUNE UNIVERSITY · 2018-2024</div>
             </div>
             <div>
               <div className="font-medium">Full Stack Development — Certification</div>
-              <div className="text-xs text-base-content/60">Platform · Year</div>
+              <div className="text-xs text-base-content/60">UDEMY · 2023</div>
             </div>
           </div>
         </div>
