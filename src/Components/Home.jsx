@@ -90,7 +90,8 @@ export default function Home() {
 
   return (
     <section
-      name="Home"
+    id="home"
+      name="home"
       className="relative bg-cover bg-center bg-no-repeat bg-fixed text-white"
       style={{ backgroundImage: "url(/code2.jpeg)" }}
     >

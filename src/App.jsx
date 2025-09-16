@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // We keep Router for potential future use (e.g., /resume)
 
 import Navbar from './Components/Navbar';
 import Home from './Components/Home';
@@ -7,7 +7,7 @@ import About from './Components/About';
 import SkillCard from './Components/SkillCards';
 import WorkExperience from './Components/WorkExpreince';
 import Projects from './Components/Projects';
-import Resume from './Components/Resume';
+import Resume from './Components/Resume'; // Keep this for /resume route
 import Contact from './Components/Contact';
 import Footer from './Components/Footer';
 import { Toaster } from 'react-hot-toast';
@@ -16,7 +16,12 @@ function App() {
   return (
     <Router>
       <Navbar />
+
+      {/* ✅ Only render all sections on HOME route */}
+      {/* ✅ Other routes (like /resume) can still exist separately */}
+
       <Routes>
+        {/* ✅ Main SPA Page — includes ALL scrollable sections */}
         <Route
           path="/"
           element={
@@ -26,16 +31,15 @@ function App() {
               <SkillCard />
               <WorkExperience />
               <Projects />
-                <Contact />
+              <Contact />
             </>
           }
         />
-        <Route path="/about" element={<About />} />
-        <Route path="/skills" element={<SkillCard />} />
-        <Route path="/projects" element={<Projects />} />
+
+        {/* ✅ Keep standalone pages if needed (e.g., full-page resume) */}
         <Route path="/resume" element={<Resume />} />
-        <Route path="/contact" element={<Contact />} />
       </Routes>
+
       <Footer />
       <Toaster />
     </Router>

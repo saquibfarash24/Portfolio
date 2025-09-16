@@ -91,7 +91,8 @@ export default function Contact() {
 
   return (
     <section
-      name="Contact"
+     id="contact"
+      name="contact"
       className="relative w-full min-h-screen flex items-center py-24"
       style={{ backgroundImage: "url('/contact.jpg')", backgroundPosition: "center", backgroundSize: "cover" }}
     >

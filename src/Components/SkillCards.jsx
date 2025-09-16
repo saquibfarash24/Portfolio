@@ -23,7 +23,7 @@ const skills = [
   { name: 'Node.js', icon: '/node.png', type: 'Backend' },
   { name: 'Express.js', icon: '/express.png', type: 'Backend' },
   { name: 'MongoDB', icon: '/mongodb.jpg', type: 'Database' },
-  { name: 'PostgreSQL', icon: '/hathi.png', type: 'Database' },
+  { name: 'PostgreSQL/Prisma ORM', icon: '/hathi.png', type: 'Database' },
   { name: 'Java', icon: '/java.png', type: 'Backend' },
 ];
 
@@ -38,7 +38,7 @@ const typeColors = {
 const SkillCard = () => {
   return (
     <section
-      id="skills"
+       id="skills"
       className="max-w-screen-xl mx-auto px-4 md:px-10 py-16"
       aria-label="Skills section"
     >

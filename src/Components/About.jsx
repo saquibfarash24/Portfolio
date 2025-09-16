@@ -96,7 +96,8 @@ export default function About() {
 
   return (
     <section
-      name="About"
+     id="about"
+      name="about"
       className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-16"
     >
       {/* Header */}
@@ -270,7 +271,7 @@ export default function About() {
       </div>
 
       {/* Projects */}
-      <div id="projects" className="mb-10">
+      <div className="mb-10">
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-2xl font-semibold">Selected Projects</h2>
           <div className="text-sm text-base-content/60">Open-source & production projects</div>
