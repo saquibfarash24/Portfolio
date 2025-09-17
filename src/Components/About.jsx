@@ -102,7 +102,7 @@ export default function About() {
     >
       {/* Header */}
       <header className={`text-center mb-8 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
-        <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+        <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           ABOUT ME
         </h1>
         <p className="mt-3 text-sm md:text-base text-base-content/70 max-w-2xl mx-auto">

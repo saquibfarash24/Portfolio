@@ -13,7 +13,7 @@ import { DiMongodb } from "react-icons/di";
 import { RiReactjsFill } from "react-icons/ri";
 import { SiPostgresql, SiTailwindcss, SiRedux } from "react-icons/si";
 
-/* Data (same as your original arrays) */
+/* Data */
 const skills = [
   "JavaScript", "ReactJS", "NodeJS", "MongoDB", "ExpressJS", "TailwindCSS",
   "Git", "GitHub", "RESTful APIs", "HTML5", "CSS3", "Java"
@@ -99,82 +99,111 @@ const projects = [
   }
 ];
 
-/* Small helper for animated mount delays */
 const delayStyle = (i, base = 80) => ({ transitionDelay: `${i * base}ms` });
 
 export default function ResumePage() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    // trigger entrance animations after mount (polish)
-    const t = setTimeout(() => setMounted(true), 80);
+    const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
 
+  const handlePrint = () => {
+    window.print();
+  };
+
+  const handleDownload = () => {
+    // Replace with actual PDF path
+    const link = document.createElement("a");
+    link.href = "/resume-saquib-sayyed.pdf";
+    link.download = "SaquibSayyed_Resume.pdf";
+    link.click();
+  };
+
   return (
-    <div className="min-h-screen bg-base-200 text-base-content py-12 px-4 cursor-pointer">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen bg-base-200 py-8 px-4 md:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
 
-        {/* Header card */}
-        <header
-          className={`card card-side bg-base-100 shadow-xl overflow-hidden mb-8 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"}`}
-          style={delayStyle(0)}
-        >
-          <div className="card-body md:flex md:items-center md:justify-between">
-            <div className="flex items-center gap-4">
-              <div className="avatar">
-                <div className="w-24 h-24 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 overflow-hidden">
-                  <img src="/img4.jpg" alt="Saquib" />
-                </div>
+        {/* Header with Actions */}
+        <div className={`flex flex-col md:flex-row md:items-center md:justify-between mb-8 gap-4 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-6"}`} style={delayStyle(0)}>
+          <div className="flex items-center gap-4">
+            <div className="avatar">
+              <div className="w-24 md:w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                <img src="/img4.jpg" alt="Saquib Arif Sayyed" />
               </div>
-
-              <div>
-                <h1 className="text-2xl md:text-3xl font-extrabold">Saquib Arif Sayyed</h1>
-                <p className="text-sm md:text-base text-base-content/70">Full Stack Developer — MERN & PERN</p>
-
-                <div className="mt-3 flex items-center gap-4 text-sm">
-                  <a href="mailto:saquibsayyed12345@gmail.com" className="inline-flex items-center gap-2 text-primary hover:underline">
-                    <FaEnvelope /> <span>saquibsayyed12345@gmail.com</span>
-                  </a>
-                  <span className="inline-flex items-center gap-2 text-base-content/70">
-                    <FaPhone /> <span>+91 73784 11134</span>
-                  </span>
+            </div>
+            <div>
+              <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+                Saquib Arif Sayyed
+              </h1>
+              <p className="text-sm md:text-base text-base-content/80 mt-1">Full Stack Developer — MERN & PERN Stack</p>
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-1 mt-2 text-sm text-base-content/70">
+                <div className="flex items-center gap-1.5">
+                  <FaEnvelope className="text-xs" /> saquibsayyed12345@gmail.com
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <FaPhone className="text-xs" /> +91 73784 11134
+                </div>
+                <div className="flex items-center gap-1.5">
+                  <FaMapMarkerAlt className="text-xs" /> Solapur, India
                 </div>
               </div>
             </div>
-
-           
           </div>
-        </header>
+
+          {/* Action Buttons */}
+          <div className="flex gap-3">
+            <button
+              onClick={handleDownload}
+              className="btn btn-primary btn-sm md:btn-md gap-2"
+            >
+              <FaDownload /> Download PDF
+            </button>
+            <button
+              onClick={handlePrint}
+              className="btn btn-outline btn-sm md:btn-md gap-2"
+            >
+              <FaPrint /> Print
+            </button>
+          </div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Left column: Summary, Skills */}
-          <div className={`col-span-2 space-y-6 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} transform transition-all duration-700`} style={delayStyle(1)}>
-            {/* Summary card */}
-            <section className="card bg-base-100 shadow-md p-6">
-              <h2 className="text-lg font-semibold mb-3">Profile</h2>
-              <p className="text-base text-base-content/80 leading-relaxed">
-                Passionate full-stack developer experienced with React, Node, Express, MongoDB and Postgres.
-                I build scalable, user-friendly applications and have hands-on experience with state management (Redux/TanStack Query), Prisma, and containerization with Docker.
+          {/* Main Content */}
+          <div className="lg:col-span-2 space-y-6">
+            {/* Profile Summary */}
+            <section
+              className={`card bg-base-100 shadow-lg rounded-2xl p-6 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={delayStyle(1)}
+            >
+              <h2 className="text-xl font-bold mb-3 flex items-center gap-2">
+                <span className="w-2 h-6 bg-primary rounded"></span>
+                Profile Summary
+              </h2>
+              <p className="leading-relaxed text-base-content/90">
+                Passionate full-stack developer with hands-on experience building scalable web applications using React, Node.js, Express, MongoDB, and PostgreSQL. Skilled in state management (Redux, TanStack Query), RESTful APIs, Prisma ORM, and responsive UI design with Tailwind CSS. Committed to writing clean, maintainable code and delivering exceptional user experiences.
               </p>
             </section>
 
-            {/* Skills card */}
-            <section className="card bg-base-100 shadow-md p-6">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold">Technical Skills</h3>
-                <div className="text-sm text-base-content/60">Level</div>
-              </div>
+            {/* Technical Skills */}
+            <section
+              className={`card bg-base-100 shadow-lg rounded-2xl p-6 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={delayStyle(2)}
+            >
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <span className="w-2 h-6 bg-secondary rounded"></span>
+                Technical Skills
+              </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {/* show top skills with progress */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
                 {[
-                  { name: "React.js", level: 90, icon: <RiReactjsFill /> },
-                  { name: "Node.js", level: 85, icon: null },
-                  { name: "MongoDB", level: 80, icon: <DiMongodb /> },
-                  { name: "Postgres", level: 76, icon: <SiPostgresql /> },
-                  { name: "Tailwind CSS", level: 88, icon: <SiTailwindcss /> },
-                  { name: "Redux / TanStack", level: 82, icon: <SiRedux /> },
+                  { name: "React.js", level: 90, icon: <RiReactjsFill className="text-blue-500" /> },
+                  { name: "Node.js", level: 85, icon: <span className="text-green-500">⬢</span> },
+                  { name: "MongoDB", level: 80, icon: <DiMongodb className="text-green-600" /> },
+                  { name: "PostgreSQL", level: 76, icon: <SiPostgresql className="text-blue-700" /> },
+                  { name: "Tailwind CSS", level: 88, icon: <SiTailwindcss className="text-cyan-500" /> },
+                  { name: "Redux / TanStack", level: 82, icon: <SiRedux className="text-purple-600" /> },
                 ].map((s, i) => (
                   <div key={s.name} className="space-y-2">
                     <div className="flex items-center justify-between">
@@ -182,43 +211,58 @@ export default function ResumePage() {
                         {s.icon && <span className="text-lg">{s.icon}</span>}
                         <span>{s.name}</span>
                       </div>
-                      <div className="text-xs text-base-content/60">{s.level}%</div>
+                      <div className="text-xs font-medium text-base-content/70">{s.level}%</div>
                     </div>
-
-                    {/* daisyUI progress bar */}
-                    <progress className="progress progress-primary w-full" value={s.level} max="100" />
+                    <progress className="progress progress-primary w-full h-2 rounded" value={s.level} max="100"></progress>
                   </div>
                 ))}
               </div>
 
-              {/* other skills as badges */}
-              <div className="mt-4">
-                <h4 className="text-sm font-medium text-base-content/70 mb-2">Other tools & skills</h4>
+              <div>
+                <h4 className="font-medium text-base-content/80 mb-3">Additional Tools & Technologies</h4>
                 <div className="flex flex-wrap gap-2">
                   {skills.map((sk) => (
-                    <span key={sk} className="badge badge-outline">{sk}</span>
+                    <span key={sk} className="badge badge-neutral badge-lg">{sk}</span>
                   ))}
                 </div>
               </div>
             </section>
 
             {/* Projects */}
-            <section className="card bg-base-100 shadow-md p-6">
-              <div className="flex items-center justify-between mb-3">
-                <h3 className="text-lg font-semibold">Projects</h3>
-                <div className="text-sm text-base-content/60">Selected</div>
-              </div>
+            <section
+              className={`card bg-base-100 shadow-lg rounded-2xl p-6 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={delayStyle(3)}
+            >
+              <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+                <span className="w-2 h-6 bg-accent rounded"></span>
+                Featured Projects
+              </h2>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {projects.map((p) => (
-                  <article key={p.title} className="p-4 rounded-lg border border-base-200 hover:shadow-lg transition transform hover:-translate-y-1 bg-base-100">
-                    <h4 className="font-semibold">{p.title}</h4>
-                    <ul className="list-disc list-inside text-sm mt-2 text-base-content/75 space-y-1">
-                      {p.bullets.map((b, idx) => <li key={idx}>{b}</li>)}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                {projects.map((p, idx) => (
+                  <article
+                    key={idx}
+                    className="p-5 rounded-xl border border-base-200 bg-base-100 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group"
+                  >
+                    <h4 className="font-bold text-lg mb-3 group-hover:text-primary transition-colors">{p.title}</h4>
+                    <ul className="list-disc list-inside text-sm text-base-content/80 space-y-1.5 mb-4">
+                      {p.bullets.slice(0, 3).map((b, i) => (
+                        <li key={i}>{b}</li>
+                      ))}
+                      {p.bullets.length > 3 && (
+                        <li className="text-xs text-primary font-medium">+{p.bullets.length - 3} more features...</li>
+                      )}
                     </ul>
-                    <div className="mt-3 flex gap-2">
-                      <a href="#" className="btn btn-xs btn-outline">Live</a>
-                      <a href="#" className="btn btn-xs btn-ghost">Code</a>
+                    {p.tech && (
+                      <div className="flex flex-wrap gap-1.5 mb-3">
+                        {p.tech.map((t, i) => (
+                          <span key={i} className="badge badge-outline badge-sm">{t}</span>
+                        ))}
+                      </div>
+                    )}
+                    <div className="flex gap-2">
+                      <a href="#" className="btn btn-xs btn-outline">Live Demo</a>
+                      <a href="#" className="btn btn-xs btn-ghost">View Code</a>
                     </div>
                   </article>
                 ))}
@@ -226,62 +270,89 @@ export default function ResumePage() {
             </section>
           </div>
 
-          {/* Right column: Contact, Experience, Education, Soft Skills */}
-          <aside className={`space-y-6 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} transform transition-all duration-700`} style={delayStyle(2)}>
-            <section className="card bg-base-100 shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-3">Contact</h3>
-              <div className="flex flex-col gap-3 text-sm">
+          {/* Sidebar */}
+          <aside className="space-y-6">
+            {/* Contact */}
+            <section
+              className={`card bg-base-100 shadow-lg rounded-2xl p-6 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={delayStyle(4)}
+            >
+              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-primary rounded"></span>
+                Contact Info
+              </h3>
+              <div className="space-y-4 text-sm">
                 <div className="flex items-start gap-3">
-                  <FaEnvelope className="mt-1 text-base-content/70" />
+                  <FaEnvelope className="mt-1 text-primary flex-shrink-0" />
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-xs text-base-content/70">saquibsayyed12345@gmail.com</div>
+                    <a href="mailto:saquibsayyed12345@gmail.com" className="text-base-content/80 hover:text-primary transition-colors">
+                      saquibsayyed12345@gmail.com
+                    </a>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-3">
-                  <FaPhone className="mt-1 text-base-content/70" />
+                  <FaPhone className="mt-1 text-primary flex-shrink-0" />
                   <div>
                     <div className="font-medium">Phone</div>
-                    <div className="text-xs text-base-content/70">+91 73784 11134</div>
+                    <div className="text-base-content/80">+91 73784 11134</div>
                   </div>
                 </div>
-
                 <div className="flex items-start gap-3">
-                  <FaMapMarkerAlt className="mt-1 text-base-content/70" />
+                  <FaMapMarkerAlt className="mt-1 text-primary flex-shrink-0" />
                   <div>
                     <div className="font-medium">Location</div>
-                    <div className="text-xs text-base-content/70">Solapur, Maharashtra, India</div>
+                    <div className="text-base-content/80">Solapur, Maharashtra, India</div>
                   </div>
                 </div>
-
-                <div className="mt-3 flex items-center gap-2">
-                  <a href="https://github.com/saquibsayyedcoder" target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm ">
-                    <FaGithub />
-                  </a>
-                  <a href="https://www.linkedin.com/in/saquib-arif-sayyed-62b88b1a1" target="_blank" rel="noreferrer" className="btn btn-ghost btn-sm">
-                    <FaLinkedin />
-                  </a>
+                <div className="pt-2 mt-3 border-t border-base-200">
+                  <div className="flex gap-3">
+                    <a
+                      href="https://github.com/saquibsayyedcoder"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-circle btn-outline hover:btn-primary transition-all"
+                      aria-label="GitHub"
+                    >
+                      <FaGithub />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/in/saquib-arif-sayyed-62b88b1a1"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="btn btn-circle btn-outline hover:btn-primary transition-all"
+                      aria-label="LinkedIn"
+                    >
+                      <FaLinkedin />
+                    </a>
+                  </div>
                 </div>
               </div>
             </section>
 
             {/* Experience */}
-            <section className="card bg-base-100 shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-3">Experience</h3>
-              <div className="space-y-4">
+            <section
+              className={`card bg-base-100 shadow-lg rounded-2xl p-6 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={delayStyle(5)}
+            >
+              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-secondary rounded"></span>
+                Experience
+              </h3>
+              <div className="space-y-5">
                 {experience.map((e, idx) => (
-                  <div key={idx} className="border-l-2 border-primary pl-4">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-semibold">{e.role}</div>
-                        <div className="text-sm text-base-content/70">{e.company}</div>
-                      </div>
-                      <div className="text-xs text-base-content/60">{e.duration}</div>
+                  <div key={idx} className="relative pl-5 border-l-2 border-primary">
+                    <div className="absolute -left-1 top-2 w-3 h-3 bg-primary rounded-full"></div>
+                    <div className="mb-2">
+                      <div className="font-semibold text-base-content">{e.role}</div>
+                      <div className="text-sm text-base-content/70">{e.company}</div>
+                      <div className="text-xs text-base-content/60 mt-1">{e.duration}</div>
                     </div>
-
-                    <ul className="list-disc list-inside mt-2 text-sm text-base-content/75 space-y-1">
-                      {e.bullets.slice(0, 4).map((b, i) => <li key={i}>{b}</li>)}
+                    <ul className="list-disc list-inside text-sm text-base-content/80 space-y-1">
+                      {e.bullets.slice(0, 3).map((b, i) => <li key={i}>{b}</li>)}
+                      {e.bullets.length > 3 && (
+                        <li className="text-xs text-primary">+{e.bullets.length - 3} more responsibilities</li>
+                      )}
                     </ul>
                   </div>
                 ))}
@@ -289,30 +360,39 @@ export default function ResumePage() {
             </section>
 
             {/* Education */}
-            <section className="card bg-base-100 shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-3">Education</h3>
-              <div>
+            <section
+              className={`card bg-base-100 shadow-lg rounded-2xl p-6 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={delayStyle(6)}
+            >
+              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-accent rounded"></span>
+                Education
+              </h3>
+              <div className="space-y-4">
                 {education.map((ed, i) => (
-                  <div key={i} className="mb-3">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="font-medium">{ed.institution}</div>
-                        <div className="text-sm text-base-content/70">{ed.degree}</div>
-                      </div>
-                      <div className="text-xs text-base-content/60">{ed.duration}</div>
-                    </div>
+                  <div key={i} className="pl-5 border-l-2 border-accent">
+                    <div className="absolute -left-1 top-2 w-3 h-3 bg-accent rounded-full"></div>
+                    <div className="font-medium">{ed.institution}</div>
+                    <div className="text-sm text-base-content/70">{ed.degree}</div>
+                    <div className="text-xs text-base-content/60">{ed.duration}</div>
                     <div className="text-xs text-base-content/70 mt-1">{ed.location}</div>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* Soft skills */}
-            <section className="card bg-base-100 shadow-md p-6">
-              <h3 className="text-lg font-semibold mb-3">Soft Skills</h3>
+            {/* Soft Skills */}
+            <section
+              className={`card bg-base-100 shadow-lg rounded-2xl p-6 transform transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={delayStyle(7)}
+            >
+              <h3 className="text-lg font-bold mb-4 flex items-center gap-2">
+                <span className="w-1.5 h-5 bg-info rounded"></span>
+                Soft Skills
+              </h3>
               <div className="flex flex-wrap gap-2">
                 {softSkills.map((s) => (
-                  <span key={s} className="badge badge-outline">{s}</span>
+                  <span key={s} className="badge badge-outline badge-sm px-3 py-2">{s}</span>
                 ))}
               </div>
             </section>

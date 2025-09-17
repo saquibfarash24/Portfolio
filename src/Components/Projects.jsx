@@ -23,6 +23,15 @@ const projects = [
     tech: ["React", "Postgres", "Node", "Tailwind"],
   },
   {
+  "id": "tailor",
+  "title": "TAILOR SHOP MANAGEMENT",
+  "description": "Full-stack Tailor Shop Management app for handling customers, multi-garment orders with measurements, worker assignment, and order numbering—built for production demos and portfolio showcase.",
+  "longDescription": "A complete tailor-shop management system that streamlines bespoke tailoring workflows: create and manage customers, add multiple garment orders per customer (shirts, pants, sherwanis, kids, unisex, etc.), capture per-garment measurements, assign tailors to orders, and track basic order finances. Supports manual or auto-sequenced human-readable order numbers with conflict-safe assignment, server-side validation (unique mobile numbers, worker existence checks), and transactional deletes to preserve data integrity. The UI is responsive and built with Tailwind + DaisyUI; backend uses Prisma for a type-safe DB layer and implements careful race-condition handling when generating sequential order IDs.",
+  "image": "/tailor.jpg",
+  "url": null,
+  "tech": ["React", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS", "DaisyUI", "Axios", "React Router", "react-toastify"]
+},
+  {
     id: "chat",
     title: "CHAT APPLICATION (MERN + Socket.IO)",
     description:
@@ -49,15 +58,6 @@ const projects = [
     url: null,
     tech: ["React", "Node", "Postgres", "Prisma", "DaisyUI"],
   },
-{
-  "id": "tailor",
-  "title": "TAILOR SHOP MANAGEMENT",
-  "description": "Full-stack Tailor Shop Management app for handling customers, multi-garment orders with measurements, worker assignment, and order numbering—built for production demos and portfolio showcase.",
-  "longDescription": "A complete tailor-shop management system that streamlines bespoke tailoring workflows: create and manage customers, add multiple garment orders per customer (shirts, pants, sherwanis, kids, unisex, etc.), capture per-garment measurements, assign tailors to orders, and track basic order finances. Supports manual or auto-sequenced human-readable order numbers with conflict-safe assignment, server-side validation (unique mobile numbers, worker existence checks), and transactional deletes to preserve data integrity. The UI is responsive and built with Tailwind + DaisyUI; backend uses Prisma for a type-safe DB layer and implements careful race-condition handling when generating sequential order IDs.",
-  "image": "/tailor.jpg",
-  "url": null,
-  "tech": ["React", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS", "DaisyUI", "Axios", "React Router", "react-toastify"]
-},
 {
   "id": "bookstore-mer n",
   "title": "BOOK STORE (MERN)",
@@ -249,7 +249,7 @@ export default function ProjectsPage() {
   return (
     <section id="projects" className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <header className="text-center mb-8">
-        <h1 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-500">
+        <h1 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           My Projects
         </h1>
         <p className="mt-2 text-base text-base-content/70 max-w-2xl mx-auto">

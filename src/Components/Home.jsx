@@ -144,8 +144,7 @@ export default function Home() {
             </div>
 
             <p className="text-sm md:text-base text-white/90 leading-relaxed max-w-xl mx-auto md:mx-0">
-              I am a frontend web developer focusing on pixel-perfect designs and performant code.
-              I build modern, responsive interfaces and add subtle interactions to improve UX.
+            As a full-stack developer experienced in both MERN and PERN ecosystems, I bring end-to-end product development skills — from PostgreSQL schema design to shadcn/ui component architecture. My focus on performance, accessibility, and maintainable code ensures applications that scale beautifully and delight users.
             </p>
 
             {/* Socials & Tech */}

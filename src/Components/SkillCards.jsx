@@ -44,7 +44,7 @@ const SkillCard = () => {
     >
       <div className="mb-8 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-          <span className="text-4xl md:text-5xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-pink-400 via-purple-400 to-indigo-400">
+          <span className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
             MY SKILL SET
           </span>
         </h2>

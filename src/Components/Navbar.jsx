@@ -141,9 +141,9 @@ function Navbar() {
                 <span className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
                   SAQUIB<span className="text-primary">.</span>
                 </span>
-                <span className="hidden md:inline-block text-sm text-base-content/70 ml-2 group-hover:text-primary transition-colors">
-                  Frontend Developer
-                </span>
+                <p className="hidden md:inline-block text-sm text-base-content/70 ml-2 group-hover:text-primary transition-colors">
+                  Frontend Developer | MERN PERN Stack | Software Engineer
+                </p>
               </a>
             </div>
           </div>
