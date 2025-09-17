@@ -184,7 +184,7 @@ export default function WorkExperience() {
     <section className="max-w-6xl mx-auto px-4 sm:px-8 py-12" name="work">
       <header className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
-          Work Experience
+          WORK EXPERIENCE
         </h1>
         <p className="mt-3 text-sm md:text-base text-base-content/70 max-w-2xl mx-auto">
           Carefully crafted roles that focus on polish, performance and production-ready code.

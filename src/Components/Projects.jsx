@@ -250,7 +250,7 @@ export default function ProjectsPage() {
     <section id="projects" className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <header className="text-center mb-8">
         <h1 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-          My Projects
+          MY PROJECTS
         </h1>
         <p className="mt-2 text-base text-base-content/70 max-w-2xl mx-auto">
           Selected production and prototype apps — MERN & PERN, realtime systems, and enterprise dashboards.
