@@ -4,9 +4,6 @@ import { FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaTasks } from "react-icons/
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-/* === DATA ===
-   normalized: startDate and endDate fields (endDate === "Present" when ongoing)
-*/
 const workExperience = [
   {
     id: 1,
@@ -44,7 +41,6 @@ const workExperience = [
   },
 ];
 
-/* Tiny pill used for tech, date & location — theme-aware */
 const Pill = ({ children, icon, className = "" }) => (
   <span
     className={`inline-flex items-center gap-2 text-xs md:text-sm px-2 py-1 rounded-full bg-base-200/60 text-base-content/90 ${className}`}
@@ -54,12 +50,12 @@ const Pill = ({ children, icon, className = "" }) => (
   </span>
 );
 
-/* Tech pills */
-const TechPills = ({ tech = [] }) => (
-  <div className="flex flex-wrap gap-2  mt-3">
-    {tech.map((t) => (
+// ✅ FIXED: Now uses jobId + index to guarantee unique keys
+const TechPills = ({ tech = [], jobId }) => (
+  <div className="flex flex-wrap gap-2 mt-3">
+    {tech.map((t, idx) => (
       <span
-        key={t}
+        key={`${jobId}-${idx}`} // 🔑 Unique per job + position
         className="text-[11px] hover:bg-gray-300 cursor-pointer md:text-xs px-2 py-1 rounded-full bg-base-200/40 text-base-content/85"
       >
         {t}
@@ -68,10 +64,9 @@ const TechPills = ({ tech = [] }) => (
   </div>
 );
 
-/* Card */
 const Card = ({ job, i }) => {
-  const period = job.endDate ? `${job.startDate} — ${job.endDate}` : job.startDate;
-  const isOngoing = String(job.endDate).toLowerCase() === "present";
+  const period = `${job.startDate} — ${job.endDate}`;
+  const isOngoing = job.endDate === "Present";
 
   return (
     <motion.article
@@ -83,13 +78,13 @@ const Card = ({ job, i }) => {
       className="relative w-full overflow-hidden rounded-2xl shadow-lg"
       aria-labelledby={`job-${job.id}-title`}
     >
-      {/* decorative accent stripe */}
+      {/* Decorative accent stripe */}
       <div className={`h-2 ${job.accent} rounded-t-2xl`} />
 
-      {/* content panel */}
+      {/* Content panel */}
       <div className="p-4 md:p-6 bg-base-100 text-base-content">
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-          {/* left block: icon + main info */}
+          {/* Left block: icon + main info */}
           <div className="flex gap-4 flex-1 min-w-0">
             <div className="flex flex-col items-center md:items-start">
               <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center bg-primary/10 text-primary ring-1 ring-primary/20">
@@ -102,24 +97,21 @@ const Card = ({ job, i }) => {
                 {job.companyName}
               </h3>
 
-              {/* Role shown prominently on small screens under company */}
               <div className="mt-1 md:mt-2 text-sm md:text-base text-base-content/85 font-medium">
                 {job.role}
               </div>
 
-              {/* meta: dates + location
-                  - stack vertically on mobile (gap-y), inline on md+
-              */}
-              <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center  gap-2 text-sm">
-                <Pill icon={<FaCalendarAlt />} className="hover:bg-gray-300 cursor-pointer">{period}</Pill>
-                <Pill icon={<FaMapMarkerAlt />} className="hover:bg-gray-300 cursor-pointer">{job.location}</Pill>
+              <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 text-sm">
+                <Pill icon={<FaCalendarAlt />}>{period}</Pill>
+                <Pill icon={<FaMapMarkerAlt />}>{job.location}</Pill>
               </div>
 
-              <TechPills tech={job.tech} />
+              {/* ✅ Pass jobId to ensure unique keys */}
+              <TechPills tech={job.tech} jobId={job.id} />
             </div>
           </div>
 
-          {/* right block: short period label + CTA (stack on small screens) */}
+          {/* Right block: status + CTA */}
           <div className="flex md:flex-col items-center md:items-end gap-3">
             <div className="text-sm text-base-content/70 text-center md:text-right">
               <div className="font-medium">Status</div>
@@ -138,7 +130,7 @@ const Card = ({ job, i }) => {
           </div>
         </div>
 
-        {/* description */}
+        {/* Description */}
         <div className="mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2 mb-3 text-base-content">
@@ -159,7 +151,9 @@ const Card = ({ job, i }) => {
               <div className="w-full bg-base-200 rounded-full h-2 overflow-hidden">
                 <div className="h-2 rounded-full bg-primary" style={{ width: "72%" }} />
               </div>
-              <div className="mt-3 text-xs text-base-content/70">Worked with Git, Docker & Postman</div>
+              <div className="mt-3 text-xs text-base-content/70">
+                Worked with HTML, CSS Tailwind CSS, JavaScript, React js, Postgre SQL, MongoDB, Express Js, NodeJs, API Integeration. Git & GitHub
+              </div>
             </div>
 
             <div className="mt-4 md:mt-0">
@@ -178,12 +172,18 @@ const Card = ({ job, i }) => {
   );
 };
 
-/* Main component */
 export default function WorkExperience() {
   return (
-    <section className="max-w-6xl mx-auto px-4 sm:px-8 py-12" name="work">
+    <section
+      id="experience"
+      className="max-w-6xl mx-auto px-4 sm:px-8 py-12"
+      aria-labelledby="experience-heading"
+    >
       <header className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600">
+        <h1
+          id="experience-heading"
+          className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600"
+        >
           WORK EXPERIENCE
         </h1>
         <p className="mt-3 text-sm md:text-base text-base-content/70 max-w-2xl mx-auto">

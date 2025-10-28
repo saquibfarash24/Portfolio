@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   FaGithub,
   FaLinkedin,
@@ -12,7 +12,7 @@ import { RiReactjsFill } from "react-icons/ri";
 import { SiPostgresql, SiTailwindcss, SiRedux } from "react-icons/si";
 import { Link } from "react-router-dom";
 
-/* Data (same as before) */
+/* Data */
 const SKILLS = [
   { name: "React.js", level: 90, icon: <RiReactjsFill /> },
   { name: "Redux / RTK", level: 82, icon: <SiRedux /> },
@@ -82,26 +82,51 @@ const EXPERIENCES = [
   },
 ];
 
-/* Utility: small inline style for stagger delays */
-const delayStyle = (i, base = 60) => ({ transitionDelay: `${i * base}ms` });
-
 export default function About() {
-  // mounted state controls entrance animation (avoid appearing before JS runs)
-  const [mounted, setMounted] = useState(false);
+  const [skillsVisible, setSkillsVisible] = useState(false);
+  const skillsRef = useRef(null);
 
+  // Trigger animation when skills section enters viewport
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 60); // small delay to trigger transition
-    return () => clearTimeout(t);
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSkillsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15 }
+    );
+
+    if (skillsRef.current) {
+      observer.observe(skillsRef.current);
+    }
+
+    return () => {
+      if (skillsRef.current) observer.unobserve(skillsRef.current);
+    };
   }, []);
+
+  // Unique bar colors (Tailwind classes)
+  const barColors = [
+    "bg-blue-500",     // React.js
+    "bg-purple-500",   // Redux
+    "bg-teal-500",     // TanStack Query
+    "bg-green-500",    // Node.js
+    "bg-emerald-500",  // MongoDB
+    "bg-amber-500",    // PostgreSQL
+    "bg-cyan-500",     // Tailwind
+    "bg-gray-500",     // Linux / Git
+  ];
 
   return (
     <section
-     id="about"
+      id="about"
       name="about"
       className="max-w-7xl mx-auto px-4 md:px-8 lg:px-12 py-16"
     >
       {/* Header */}
-      <header className={`text-center mb-8 transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+      <header className="text-center mb-8">
         <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
           ABOUT ME
         </h1>
@@ -113,11 +138,8 @@ export default function About() {
       {/* top grid: summary + contact */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
         <div className="md:col-span-2 space-y-4">
-          {/* Profile Card (daisyUI card) */}
-          <div
-            className={`card card-compact bg-base-100 shadow-lg p-6 transform transition-transform duration-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-            style={delayStyle(1)}
-          >
+          {/* Profile Card */}
+          <div className="card card-compact bg-base-100 shadow-lg p-6">
             <div className="card-body p-0">
               <h2 className="text-xl font-semibold mb-2">Profile</h2>
               <p className="text-sm md:text-base text-base-content/80 leading-relaxed">
@@ -125,14 +147,18 @@ export default function About() {
               </p>
 
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link to="/projects" className="btn btn-primary btn-sm">View Projects</Link>
-                <Link to="/resume" target="_blank" rel="noreferrer" className="btn btn-outline btn-sm">View Resume</Link>
+                <Link to="/projects" className="btn btn-primary btn-sm">
+                  View Projects
+                </Link>
+                <Link to="/resume" target="_blank" rel="noreferrer" className="btn btn-outline btn-sm">
+                  View Resume
+                </Link>
               </div>
             </div>
           </div>
 
-          {/* Skills Card */}
-          <div className={`card bg-base-100 shadow-lg p-6 transform transition duration-500 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`} style={delayStyle(2)}>
+          {/* Skills Card with unique colored bars */}
+          <div ref={skillsRef} className="card bg-base-100 shadow-lg p-6">
             <div className="card-body p-0">
               <div className="flex items-center justify-between">
                 <h3 className="text-lg font-semibold">Core Skills</h3>
@@ -155,8 +181,13 @@ export default function About() {
 
                     <div className="w-full h-2 bg-neutral rounded-full mt-2 overflow-hidden">
                       <div
-                        className="h-2 rounded-full bg-primary transition-all duration-700"
-                        style={{ width: `${s.level}%` }}
+                        className={`h-2 rounded-full ${barColors[idx % barColors.length]} transition-all duration-1000 ease-out ${
+                          skillsVisible ? "opacity-100" : "opacity-0"
+                        }`}
+                        style={{
+                          width: skillsVisible ? `${s.level}%` : "0%",
+                          transitionDelay: skillsVisible ? `${idx * 100}ms` : "0ms",
+                        }}
                         aria-hidden
                       />
                     </div>
@@ -173,8 +204,12 @@ export default function About() {
                   ].map((t, i) => (
                     <span
                       key={t}
-                      className="px-2 py-1 rounded-full text-xs border border-base-200 hover:shadow-sm transition transform hover:-translate-y-1"
-                      style={delayStyle(i, 25)}
+                      className={`px-2 py-1 rounded-full text-xs border border-base-200 hover:shadow-sm transition transform ${
+                        skillsVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-2"
+                      } hover:-translate-y-1`}
+                      style={{
+                        transitionDelay: skillsVisible ? `${i * 50}ms` : "0ms",
+                      }}
                     >
                       {t}
                     </span>
@@ -186,7 +221,7 @@ export default function About() {
         </div>
 
         {/* Right column: contact & quick facts */}
-        <aside className={`space-y-4 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"} transition-all duration-700`} style={delayStyle(3)}>
+        <aside className="space-y-4">
           <div className="card bg-base-100 shadow-lg p-6">
             <div className="flex items-center justify-between">
               <h3 className="text-lg font-semibold">Contact</h3>
@@ -195,7 +230,7 @@ export default function About() {
 
             <div className="mt-4 space-y-3">
               <div className="flex items-start gap-3">
-                <FaEnvelope className="mt-1 text-base-content/70" />
+                <FaEnvelope className="mt-1 text-base-content/70 text-rose-400" />
                 <div>
                   <div className="text-sm font-medium">Email</div>
                   <div className="text-xs text-base-content/60">saquibsayyed12345@gmail.com</div>
@@ -203,12 +238,12 @@ export default function About() {
               </div>
 
               <div className="flex items-start gap-3">
-                <FaLinkedin className="mt-1 text-base-content/70" />
+                <FaLinkedin className="mt-1 text-base-content/70 text-blue-500" />
                 <div>
                   <div className="text-sm font-medium">LinkedIn</div>
                   <Link
                     className="text-xs text-primary inline-flex items-center gap-1"
-                   to="https://www.linkedin.com/in/saquib-sayyed-62b88b1a1/"
+                    to="https://www.linkedin.com/in/saquib-sayyed-62b88b1a1/"
                     target="_blank"
                     rel="noreferrer"
                   >
@@ -218,10 +253,15 @@ export default function About() {
               </div>
 
               <div className="flex items-start gap-3">
-                <FaGithub className="mt-1 text-base-content/70" />
+                <FaGithub className="mt-1 text-base-content/70 text-gray-500" />
                 <div>
                   <div className="text-sm font-medium">GitHub</div>
-                  <Link className="text-xs text-primary" to="https://github.com/saquibsayyedcoder" target="_blank" rel="noreferrer">
+                  <Link
+                    className="text-xs text-primary"
+                    to="https://github.com/saquibsayyedcoder"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     github.com/saquibsayyedcoder
                   </Link>
                 </div>
@@ -244,11 +284,10 @@ export default function About() {
       <div className="mb-10">
         <h2 className="text-2xl font-semibold mb-4">Work Experience</h2>
         <div className="space-y-6">
-          {EXPERIENCES.map((exp, idx) => (
+          {EXPERIENCES.map((exp) => (
             <article
               key={exp.id}
-              className={`card card-side bg-base-100 shadow-md p-6 transform transition-all duration-600 hover:-translate-y-2`}
-              style={delayStyle(idx + 1)}
+              className="card card-side bg-base-100 shadow-md p-6 transform transition-all duration-600 hover:-translate-y-2"
             >
               <div className="flex-1">
                 <div className="flex items-center gap-3">
@@ -278,11 +317,10 @@ export default function About() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PROJECTS.map((p, i) => (
+          {PROJECTS.map((p) => (
             <div
               key={p.id}
               className="card bg-base-100 shadow-md p-5 flex flex-col transform transition duration-500 hover:-translate-y-2 hover:shadow-lg"
-              style={delayStyle(i + 1)}
             >
               <div className="flex items-center justify-between">
                 <div>
@@ -334,10 +372,16 @@ export default function About() {
       {/* Footer CTA */}
       <footer className="card bg-base-100 shadow-md p-6 text-center">
         <h4 className="text-lg font-semibold">Want to work together?</h4>
-        <p className="text-sm text-base-content/70 mt-2">I’m open to freelance & full-time opportunities. Reach out and let’s build something great.</p>
+        <p className="text-sm text-base-content/70 mt-2">
+          I’m open to freelance & full-time opportunities. Reach out and let’s build something great.
+        </p>
         <div className="mt-4 flex items-center justify-center gap-3">
-          <a href="mailto:saquib@example.com" className="btn btn-primary btn-sm">Email Me</a>
-          <a href="/resume" className="btn btn-outline btn-sm" target="_blank" rel="noreferrer">View My Resume</a>
+          <a href="mailto:saquibsayyed12345@gmail.com" className="btn btn-primary btn-sm">
+            Email Me
+          </a>
+          <a href="/resume" className="btn btn-outline btn-sm" target="_blank" rel="noreferrer">
+            View My Resume
+          </a>
         </div>
       </footer>
     </section>
