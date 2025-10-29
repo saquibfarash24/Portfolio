@@ -4,80 +4,25 @@ import { FaExternalLinkAlt } from "react-icons/fa";
 
 /* Projects data (update image paths/URLs as needed) */
 const projects = [
-  {
-    id: "honor",
-    title: "HONOR FREELANCE",
-    description:
-      "A job search platform built using the MERN stack, with role-based access for recruiters and job seekers, job applications, and admin dashboards.",
-    image: "/honor.png",
-    url: "https://honorfreelance.com/",
-    tech: ["React", "Node", "Express", "MongoDB", "Tailwind"],
-  },
-  {
-    id: "aizts",
-    title: "AIZTS OFFICIAL WEBSITE",
-    description:
-      "Tech Stack: PostgreSQL, Node, Express, React, HTML, CSS, JavaScript, Tailwind CSS. Corporate site with CMS integration and responsive UI.",
-    image: "/aizts.png",
-    url: "https://aiztsinfotech.com/",
-    tech: ["React", "Postgres", "Node", "Tailwind"],
-  },
-  {
-  "id": "tailor",
-  "title": "TAILOR SHOP MANAGEMENT",
-  "description": "Full-stack Tailor Shop Management app for handling customers, multi-garment orders with measurements, worker assignment, and order numbering—built for production demos and portfolio showcase.",
-  "longDescription": "A complete tailor-shop management system that streamlines bespoke tailoring workflows: create and manage customers, add multiple garment orders per customer (shirts, pants, sherwanis, kids, unisex, etc.), capture per-garment measurements, assign tailors to orders, and track basic order finances. Supports manual or auto-sequenced human-readable order numbers with conflict-safe assignment, server-side validation (unique mobile numbers, worker existence checks), and transactional deletes to preserve data integrity. The UI is responsive and built with Tailwind + DaisyUI; backend uses Prisma for a type-safe DB layer and implements careful race-condition handling when generating sequential order IDs.",
-  "image": "/tailor.jpg",
-  "url": null,
-  "tech": ["React", "Node.js", "PostgreSQL", "Prisma", "Tailwind CSS", "DaisyUI", "Axios", "React Router", "react-toastify"]
-},
-  {
-    id: "chat",
-    title: "CHAT APPLICATION (MERN + Socket.IO)",
-    description:
-      "Real-time chat with one-to-one & group conversations, presence, typing indicators and message history persisted in MongoDB. Scales to multi-instance with Redis pub/sub.",
-    image: "/chatapp.jpg",
-    url: null,
-    tech: ["React", "Socket.IO", "Node", "MongoDB"],
-  },
+
   {
     id: "jewel",
     title: "JEWELRY SHOP MANAGEMENT SYSTEM",
     description:
-      "PERN stack application (Prisma + Postgres) that manages inventory, purchases, sales invoices, and customer profiles with a secure admin panel.",
-    image: "/jewel2.jpg",
+      "Developed secure backend APIs for admin-driven school operations, including class management, attendance tracking, and student records. Implemented RBAC, optimized PostgreSQL queries, and integrated Excel/PDF export functionality.",
+    image: "/j2.jpg",
     url: null,
-    tech: ["React", "Postgres", "Prisma", "Tailwind"],
+    tech: ["Node Js", "Express Js","Javascript", "PostgreSQL", "Prisma"],
   },
   {
     id: "school",
-    title: "SCHOOL SUPER ADMIN MANAGEMENT",
+    title: "SCHOOL MANAGEMENT",
     description:
-      "Centralized super-admin system for multi-school management: student/teacher management, fee tracking, schedules and role-based authentication.",
-    image: "/school.jpg",
+    "Engineered backend services for a jewelry store platform with authentication, product management, and payment integration. Designed RESTful APIs, managed database schemas, and optimized checkout flow using Stripe.",
+    image: "/schoolimg.jpg",
     url: null,
-    tech: ["React", "Node", "Postgres", "Prisma", "DaisyUI"],
+    tech: [ "Node Js","Express Js", "Postgres", "Prisma/ORM", "JWT", "middlewares"],
   },
-{
-  "id": "bookstore-mer n",
-  "title": "BOOK STORE (MERN)",
-  "description": "Full-stack bookstore application with JWT-based authentication. Users can browse books, manage carts/orders, and admins can manage inventory and orders.",
-  "longDescription": "A modern MERN-stack Book Store app implementing JSON Web Token (JWT) authentication for secure access. The front-end (React) provides a responsive UI for browsing books, searching/filtering, viewing details, adding to cart, and placing orders. The back-end (Node/Express) exposes RESTful APIs for authentication, book/catalog management, cart and order processing. MongoDB (via Mongoose) stores users, books, carts and orders. JWT is used for stateless authentication and role-based access (user vs admin). The app includes server-side validation, protected routes, refresh-token-friendly architecture (if enabled), and follows best practices for production deployment.",
-  "image": "/book store.jpg",
-  "url": null,
-  "tech": [
-    "React",
-    "Node.js",
-    "Express",
-    "MongoDB",
-    "Mongoose",
-    "JWT (jsonwebtoken)",
-    "Axios",
-    "Tailwind CSS (or Bootstrap)",
-    "React Router",
-    "react-toastify"
-  ]
-},
 ];
 
 /* ProjectCard: theme-safe card — solid bg + image with overlay for readability */
@@ -249,7 +194,7 @@ export default function ProjectsPage() {
   return (
     <section id="projects" className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <header className="text-center mb-8">
-        <h1 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+        <h1 className="text-3xl sm:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-600">
           MY PROJECTS
         </h1>
         <p className="mt-2 text-base text-base-content/70 max-w-2xl mx-auto">

@@ -8,31 +8,29 @@ import { DiMongodb } from "react-icons/di";
 import { SiExpress } from "react-icons/si";
 import { RiReactjsFill, RiNextjsFill } from "react-icons/ri";
 import { SiTypescript } from "react-icons/si";
-import saqibimg from "/img4.jpg"; // public folder
+import saquibF from "/s2.png"; // public folder
 import { Link } from "react-router-dom";
+import { BiLogoPostgresql } from "react-icons/bi";
+import { SiPrisma } from "react-icons/si";
+import { IoLogoJavascript } from "react-icons/io5";
+
+
 
 /* --- data with hover classes --- */
 const SOCIALS = [
   {
     id: "li",
     icon: <FaLinkedin />,
-    href: "https://www.linkedin.com/in/saquib-arif-sayyed-62b88b1a1",
+    href: "https://www.linkedin.com/in/saquib-farash-0b9a8a284/",
     // LinkedIn blue on hover
     hoverClass:
       "hover:bg-[rgba(10,102,194,0.12)] hover:text-[#0A66C2] focus:ring-[#0A66C2]/30",
   },
-  {
-    id: "ig",
-    icon: <FaInstagram />,
-    href: "https://www.instagram.com/ss.saqib_muhammed/",
-    // Instagram gradient on hover (subtle)
-    hoverClass:
-      "hover:bg-gradient-to-br hover:from-[#f58529]/20 hover:via-[#dd2a7b]/20 hover:to-[#8134af]/20 hover:text-[#DD2A7B] focus:ring-[#DD2A7B]/30",
-  },
+
   {
     id: "gh",
     icon: <FaGithub />,
-    href: "https://github.com/saquibsayyedcoder",
+    href: "https://github.com/saquibfarash24",
     // GitHub dark hover
     hoverClass: "hover:bg-[rgba(0,0,0,0.12)] hover:text-[#111827] focus:ring-[#111827]/30",
   },
@@ -43,8 +41,19 @@ const TECH = [
   { id: "mdb", icon: <DiMongodb />, hoverClass: "hover:bg-[rgba(16,185,129,0.12)] hover:text-[#10B981] focus:ring-[#10B981]/30" },
   { id: "ex", icon: <SiExpress />, hoverClass: "hover:bg-[rgba(250,204,21,0.12)] hover:text-[#F59E0B] focus:ring-[#F59E0B]/30" },
   { id: "node", icon: <FaNodeJs />, hoverClass: "hover:bg-[rgba(34,197,94,0.12)] hover:text-[#22C55E] focus:ring-[#22C55E]/30" },
-  { id: "next", icon: <RiNextjsFill />, hoverClass: "hover:bg-[rgba(17,24,39,0.12)] hover:text-[#0F172A] focus:ring-[#0F172A]/30" },
-  { id: "ts", icon: <SiTypescript />, hoverClass: "hover:bg-[rgba(14,165,233,0.12)] hover:text-[#0EA5E9] focus:ring-[#0EA5E9]/30" },
+  { id: "next", icon: <SiPrisma />, hoverClass: "hover:bg-[rgba(17,24,39,0.12)] hover:text-[#0F172A] focus:ring-[#0F172A]/30" },
+   { 
+  id: "pg", 
+  icon: <BiLogoPostgresql />, 
+  hoverClass: "hover:bg-[rgba(14,165,233,0.12)] hover:text-[#0EA5E9] focus:ring-[#0EA5E9]/30" 
+},
+{ 
+  id: "ts", 
+  icon: <IoLogoJavascript />, 
+  hoverClass: "hover:bg-[#001F3F] hover:text-[#FFD700] focus:ring-[#001F3F]/40" 
+}
+
+
 ];
 
 const TYPED_WORDS = ["Developer", "Programmer", "Coder"];
@@ -93,7 +102,7 @@ export default function Home() {
     id="home"
       name="home"
       className="relative bg-cover bg-center bg-no-repeat bg-fixed text-white"
-      style={{ backgroundImage: "url(/code2.jpeg)" }}
+      style={{ backgroundImage: "url(/codeimg.jpeg)" }}
     >
       <style>{`
         @keyframes floaty {
@@ -123,9 +132,9 @@ export default function Home() {
           >
             <div className="relative group">
               <img
-                src={saqibimg}
+                src={saquibF}
                 alt="Saqib"
-                className="w-48 h-48 md:w-96 md:h-96 rounded-full object-cover border-4 border-green-400 shadow-2xl floaty transform transition-all duration-500 group-hover:scale-105"
+                className="w-48 h-48 md:w-96 md:h-96 rounded-full object-cover border-4 border-cyan-400 shadow-2xl floaty transform transition-all duration-500 group-hover:scale-105"
               />
               <span className="absolute inset-0 rounded-full ring-0 group-hover:ring-8 group-hover:ring-green-300/20 transition-all duration-500" />
             </div>
@@ -133,19 +142,18 @@ export default function Home() {
 
           {/* Text */}
           <div className={`md:w-1/2 space-y-6 order-2 md:order-1 text-center md:text-left transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <span className="text-lg font-medium text-green-300 tracking-wide">Welcome To My Space</span>
+            <span className="text-lg font-medium text-white tracking-wide">Welcome To My Space</span>
 
             <div className="text-3xl md:text-4xl font-extrabold leading-tight flex flex-wrap items-baseline justify-center md:justify-start gap-3">
               <h1 className="text-white/95">Hello, I'm a</h1>
-              <div className="text-green-400">
+              <div className="text-cyan-500">
                 <span className="inline-block">{currentShown}</span>
                 <span className="typed-caret" aria-hidden />
               </div>
             </div>
 
             <p className="text-sm md:text-base text-white/90 leading-relaxed max-w-xl mx-auto md:mx-0">
-            As a full-stack developer experienced in both MERN and PERN ecosystems, I bring end-to-end product development skills — from PostgreSQL schema design to shadcn/ui component architecture. My focus on performance, accessibility, and maintainable code ensures applications that scale beautifully and delight users.
-            </p>
+As a backend developer passionate about clean architecture and database design, I craft robust RESTful and GraphQL APIs using Node.js, Express, and PostgreSQL. With experience in Prisma ORM and JWT-based authentication, I ensure secure, optimized, and maintainable server-side solutions that scale effortlessly.            </p>
 
             {/* Socials & Tech */}
             <div className="flex flex-col md:flex-row justify-between items-center gap-8 mt-6">
@@ -189,7 +197,7 @@ export default function Home() {
 
             {/* Resume Button */}
             <Link to="/resume" className="inline-block">
-              <button className="mt-6 px-6 py-3 bg-green-400 rounded-lg hover:bg-green-600 transition transform hover:-translate-y-1 shadow-md">
+              <button className="mt-6 px-6 py-3 bg-cyan-400 rounded-lg hover:bg-cyan-600 transition transform hover:-translate-y-1 shadow-md">
                 View Resume
               </button>
             </Link>

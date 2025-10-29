@@ -48,18 +48,14 @@ export default function Footer() {
                 <span className="font-bold text-primary">S</span>
               </div>
               <div>
-                <h3 className="text-lg font-bold">Saquib Sayyed</h3>
-                <div className="text-sm text-base-content/70">Full Stack Developer — MERN & PERN</div>
+                <h3 className="text-lg font-bold">Saquib Farash</h3>
+                <div className="text-sm text-base-content/70">Software Engineer </div>
               </div>
             </div>
 
-            <p className="text-sm text-base-content/70">
-              I build scalable, user-first web applications using React, Node, Postgres/MongoDB and modern toolchains. Open to freelance & full-time roles.
-            </p>
-
             <div className="flex items-center gap-3 mt-2">
               <a
-                href="https://github.com/saquibsayyedcoder"
+                href="https://github.com/saquibfarash24"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
@@ -69,7 +65,7 @@ export default function Footer() {
               </a>
 
               <a
-                href="https://www.linkedin.com/in/saquib-arif-sayyed-62b88b1a1"
+                href="https://www.linkedin.com/in/saquib-farash-0b9a8a284/"
                 target="_blank"
                 rel="noreferrer"
                 aria-label="LinkedIn"
@@ -78,35 +74,6 @@ export default function Footer() {
                 <FaLinkedin />
               </a>
 
-              <a
-                href="https://www.instagram.com/ss.saqib_muhammed/?next=%2F"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="Instagram"
-                className="btn btn-ghost btn-circle"
-              >
-                <FaInstagram />
-              </a>
-
-              <a
-                href="https://www.youtube.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="YouTube"
-                className="btn btn-ghost btn-circle"
-              >
-                <FaYoutube />
-              </a>
-
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noreferrer"
-                aria-label="X / Twitter"
-                className="btn btn-ghost btn-circle"
-              >
-                <BsTwitter />
-              </a>
             </div>
           </div>
 
@@ -140,7 +107,7 @@ export default function Footer() {
                 <FaEnvelope className="mt-1 text-primary" />
                 <div>
                   <div className="font-medium">Email</div>
-                  <a href="mailto:saquibsayyed12345@gmail.com" className="text-sm link link-hover">saquibsayyed12345@gmail.com</a>
+                  <a href="mailto:saquibfarash0346@gmail.com" className="text-sm link link-hover">saquibfarash0346@gmail.com</a>
                 </div>
               </li>
 
@@ -148,7 +115,7 @@ export default function Footer() {
                 <FaPhone className="mt-1 text-primary" />
                 <div>
                   <div className="font-medium">Phone</div>
-                  <a href="tel:+917378411134" className="text-sm link link-hover">+91 73784 11134</a>
+                  <a href="tel:+91 9767862018" className="text-sm link link-hover">+91 9767862018</a>
                 </div>
               </li>
 
@@ -163,46 +130,14 @@ export default function Footer() {
           </div>
 
           {/* Newsletter */}
-          <div>
-            <h4 className="font-semibold mb-3">Subscribe</h4>
-
-            <p className="text-sm text-base-content/70 mb-4">
-              Get occasional updates about projects, tips, and availability. No spam.
-            </p>
-
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                aria-label="Email address"
-                placeholder="you@example.com"
-                className="input input-bordered w-full"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button type="submit" className="btn btn-primary whitespace-nowrap">
-                Subscribe
-              </button>
-            </form>
-
-            {subStatus === "ok" && (
-              <div className="alert alert-success mt-3 p-2 rounded-md text-sm">
-                {subMsg}
-              </div>
-            )}
-            {subStatus === "error" && (
-              <div className="alert alert-error mt-3 p-2 rounded-md text-sm">
-                {subMsg}
-              </div>
-            )}
-          </div>
+  
         </div>
 
         {/* Divider + bottom row */}
         <div className="divider my-8" />
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-base-content/70">
-          <div>© {new Date().getFullYear()} Saquib Arif Sayyed. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} Saquib Sajid Farash. All rights reserved.</div>
           <div className="flex items-center gap-4">
             <a href="/privacy" className="link link-hover">Privacy</a>
             <a href="/terms" className="link link-hover">Terms</a>

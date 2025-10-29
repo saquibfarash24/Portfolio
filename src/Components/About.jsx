@@ -15,43 +15,33 @@ import { Link } from "react-router-dom";
 /* Data */
 const SKILLS = [
   { name: "React.js", level: 90, icon: <RiReactjsFill /> },
-  { name: "Redux / RTK", level: 82, icon: <SiRedux /> },
-  { name: "TanStack Query", level: 78, icon: <span>Q</span> },
   { name: "Node.js / Express", level: 85, icon: <FaBriefcase /> },
   { name: "MongoDB", level: 80, icon: <DiMongodb /> },
   { name: "PostgreSQL / Prisma", level: 76, icon: <SiPostgresql /> },
-  { name: "Tailwind CSS / DaisyUI / ShadCN", level: 88, icon: <SiTailwindcss /> },
-  { name: "Linux / Git", level: 70, icon: <FaBriefcase /> },
+  { name: "HTML / CSS / Javascript", level: 88, icon: <SiTailwindcss /> },
+  { name: "Git / GitHub", level: 70, icon: <FaBriefcase /> },
 ];
 
 const PROJECTS = [
   {
-    id: 1,
-    title: "Job Portal Platform",
-    subtitle: "React + Node + PostgreSQL",
-    desc:
-      "Role-based job portal: Admin / Recruiter / Job Seeker. Resume upload, application management, shortlisting, and recruiter analytics.",
-    tech: ["React", "Tailwind", "Node", "Postgres", "Prisma", "Redux"],
-    link: "#",
-  },
-  {
-    id: 2,
-    title: "Education Management System",
-    subtitle: "MERN Stack",
-    desc:
-      "Admin-driven school management: classes, attendance, student profiles, and reports with export features and RBAC.",
-    tech: ["React", "MongoDB", "Express", "Node", "Tailwind"],
-    link: "#",
-  },
-  {
-    id: 3,
-    title: "Jewelry E-commerce",
-    subtitle: "React + Stripe",
-    desc:
-      "Mobile-first e-commerce with catalog filters, dynamic pricing, admin inventory panel, and optimized checkout flow.",
-    tech: ["React", "Tailwind", "Stripe", "Node"],
-    link: "#",
-  },
+  id: 2,
+  title: "Education Management System",
+  subtitle: "PERN Stack",
+  desc:
+    "Developed secure backend APIs for admin-driven school operations, including class management, attendance tracking, and student records. Implemented RBAC, optimized PostgreSQL queries, and integrated Excel/PDF export functionality.",
+  tech: ["PostgreSQL", "Express", "Node", "React", "Prisma"],
+  link: "#",
+},
+{
+  id: 3,
+  title: "Jewelry E-commerce",
+  subtitle: "Node.js + Stripe",
+  desc:
+    "Engineered backend services for a jewelry store platform with authentication, product management, and payment integration. Designed RESTful APIs, managed database schemas, and optimized checkout flow using Stripe.",
+  tech: ["Node", "Express", "PostgreSQL", "Stripe", "JWT"],
+  link: "#",
+},
+
 ];
 
 const EXPERIENCES = [
@@ -59,27 +49,29 @@ const EXPERIENCES = [
     id: 1,
     role: "Software Engineer",
     company: "AIZTS INFOTECH PVT LTD",
-    period: "May 2024 — Present",
+    period: "Jul 2024 — Present",
     location: "Remote / Office",
     bullets: [
-      "Built responsive, user-focused web apps for job portal, education & e-commerce domains.",
-      "Implemented clean UI using React.js, Prisma, PostgreSQL and Tailwind CSS.",
-      "Optimized frontend-backend communication and state with Redux Toolkit & TanStack Query.",
-      "Collaborated using Git, Docker, Postman; improved performance and cross-platform UX.",
+      "At AIZTS Infotech Pvt. Ltd, I work as a Backend Developer responsible for designing and implementing scalable backend architectures for SaaS-based platforms.",
+       "My focus lies in building reliable APIs, optimizing database performance, and ensuring seamless communication between services.",
+      "I actively contribute to improving system performance and reliability through comprehensive testing, code optimization, and continuous integration practices.",
+      "Collaborating closely with cross-functional teams, I help deliver secure, high-performance backend solutions that support dynamic business needs and enhance overall product scalability."
     ],
   },
-  {
-    id: 2,
-    role: "Associate Engineer / Intern",
-    company: "AIZTS Infotech",
-    period: "Aug 25, 2024 — Present",
-    location: "Pathruth Chowk, Solapur, Maharashtra",
-    bullets: [
-      "Created modular components and improved code reuse across multiple projects.",
-      "Helped optimize DB queries and integrated RESTful APIs.",
-      "Performed tests, wrote docs, and supported onboarding of new team members.",
-    ],
-  },
+   {
+  id: 1,
+  role: "Process Executive",
+  company: "NVIDIA",
+  period: "Feb 2023 — Sep 2023",
+  location: "Remote / Office",
+  bullets: [
+    "AI Frameworks: Worked extensively with AI-based frameworks, contributing to the development, testing, and deployment of innovative solutions leveraging machine learning and artificial intelligence technologies.",
+    "Autonomous Automobiles: Gained hands-on experience in the field of autonomous vehicles, focusing on software integration, system testing, and ensuring performance reliability of advanced autonomous systems.",
+    "Quality Assurance: Played a pivotal role in quality assurance, conducting thorough testing to identify and resolve software bugs, ensuring optimal system performance, and maintaining high product quality standards."
+  ],
+}
+
+
 ];
 
 export default function About() {
@@ -127,12 +119,11 @@ export default function About() {
     >
       {/* Header */}
       <header className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+        <h1 className="text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-600">
           ABOUT ME
         </h1>
         <p className="mt-3 text-sm md:text-base text-base-content/70 max-w-2xl mx-auto">
-          Full-stack developer building production-ready web apps with strong UX, clean architecture, and pragmatic engineering.
-        </p>
+I’m a backend developer driven by curiosity and a passion for scalable architecture. I love crafting RESTful APIs, managing PostgreSQL databases, and implementing authentication systems with technologies like JWT and Prisma ORM. My goal is to write clean, maintainable code that not only works efficiently but also evolves gracefully with the product.        </p>
       </header>
 
       {/* top grid: summary + contact */}
@@ -143,11 +134,10 @@ export default function About() {
             <div className="card-body p-0">
               <h2 className="text-xl font-semibold mb-2">Profile</h2>
               <p className="text-sm md:text-base text-base-content/80 leading-relaxed">
-                I'm a full-stack developer working across MERN & PERN stacks. I build maintainable applications — from pixel-perfect frontends to robust backend services. I enjoy solving complex problems and shipping production-quality software.
-              </p>
+As a backend developer, I specialize in turning business logic into reliable APIs and data-driven services. I work primarily with Node.js, Express, PostgreSQL, and Prisma, creating well-structured, secure, and high-performing backend systems that integrate seamlessly with frontend applications. I’m motivated by collaboration, clean code, and building products that make a real impact.              </p>
 
               <div className="mt-4 flex flex-wrap gap-3">
-                <Link to="/projects" className="btn btn-primary btn-sm">
+                <Link to="/projects" className="btn bg-cyan-500 btn-sm">
                   View Projects
                 </Link>
                 <Link to="/resume" target="_blank" rel="noreferrer" className="btn btn-outline btn-sm">
@@ -199,8 +189,8 @@ export default function About() {
                 <h4 className="font-medium text-sm text-base-content/70">Technologies</h4>
                 <div className="mt-2 flex flex-wrap gap-2">
                   {[
-                    "React", "Redux Toolkit", "TanStack Query", "Node.js", "Express",
-                    "MongoDB", "Postgres", "Prisma", "Tailwind", "ShadCN UI", "Docker"
+                    "React", "Node.js", "Express",
+                    "MongoDB", "Postgres", "Prisma", "HTML / CSS / JAVASCRIPT"
                   ].map((t, i) => (
                     <span
                       key={t}
@@ -233,7 +223,7 @@ export default function About() {
                 <FaEnvelope className="mt-1 text-base-content/70 text-rose-400" />
                 <div>
                   <div className="text-sm font-medium">Email</div>
-                  <div className="text-xs text-base-content/60">saquibsayyed12345@gmail.com</div>
+                  <div className="text-xs text-base-content/60">saquibfarash0346@gmail.com</div>
                 </div>
               </div>
 
@@ -243,11 +233,11 @@ export default function About() {
                   <div className="text-sm font-medium">LinkedIn</div>
                   <Link
                     className="text-xs text-primary inline-flex items-center gap-1"
-                    to="https://www.linkedin.com/in/saquib-sayyed-62b88b1a1/"
+                    to="https://www.linkedin.com/in/saquib-farash-0b9a8a284/"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    linkedin.com/in/saquib-arif <FaExternalLinkAlt className="text-xs" />
+                    linkedin.com/in/saquib-farash <FaExternalLinkAlt className="text-xs" />
                   </Link>
                 </div>
               </div>
@@ -258,11 +248,11 @@ export default function About() {
                   <div className="text-sm font-medium">GitHub</div>
                   <Link
                     className="text-xs text-primary"
-                    to="https://github.com/saquibsayyedcoder"
+                    to="https://github.com/saquibfarash24"
                     target="_blank"
                     rel="noreferrer"
                   >
-                    github.com/saquibsayyedcoder
+                    github.com/saquibfarash24
                   </Link>
                 </div>
               </div>
@@ -272,8 +262,8 @@ export default function About() {
           <div className="card bg-base-100 shadow-lg p-6">
             <h3 className="text-lg font-semibold mb-2">Quick Facts</h3>
             <ul className="text-sm text-base-content/70 space-y-2">
-              <li><strong>Experience:</strong> 1+ years (Intern → Associate Engineer → Software Engineer)</li>
-              <li><strong>Location:</strong> Solapur, Maharashtra (Open to remote)</li>
+              <li><strong>Experience:</strong> 1.5 years (Software Engineer)</li>
+              <li><strong>Location:</strong> Solapur, Maharashtra (Open to remote / on-site)</li>
               <li><strong>Availability:</strong> Immediate / Notice-based</li>
             </ul>
           </div>
@@ -351,11 +341,7 @@ export default function About() {
           <div className="text-sm text-base-content/80 space-y-3">
             <div>
               <div className="font-medium">BCA / MCA</div>
-              <div className="text-xs text-base-content/60">BHARTI VIDYAPEETH PUNE UNIVERSITY · 2018-2024</div>
-            </div>
-            <div>
-              <div className="font-medium">Full Stack Development — Certification</div>
-              <div className="text-xs text-base-content/60">UDEMY · 2023</div>
+              <div className="text-xs text-base-content/60">Shivaji University, Kolhapur· 2018-2024</div>
             </div>
           </div>
         </div>
@@ -363,7 +349,7 @@ export default function About() {
         <div className="card bg-base-100 shadow-md p-6">
           <h3 className="text-lg font-semibold mb-3">Certifications & Tools</h3>
           <ul className="text-sm text-base-content/80 list-disc list-inside space-y-2">
-            <li>PostgreSQL Basics — Certificate</li>
+            <li>PostgreSQL — Certificate</li>
             <li>Prisma & Database Modeling — Workshop</li>
           </ul>
         </div>
@@ -376,7 +362,7 @@ export default function About() {
           I’m open to freelance & full-time opportunities. Reach out and let’s build something great.
         </p>
         <div className="mt-4 flex items-center justify-center gap-3">
-          <a href="mailto:saquibsayyed12345@gmail.com" className="btn btn-primary btn-sm">
+          <a href="mailto:saquibfarash0346@gmail.com" className="btn btn-primary btn-sm">
             Email Me
           </a>
           <a href="/resume" className="btn btn-outline btn-sm" target="_blank" rel="noreferrer">

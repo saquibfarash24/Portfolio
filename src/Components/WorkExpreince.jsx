@@ -9,33 +9,30 @@ const workExperience = [
     id: 1,
     role: "Software Engineer",
     companyName: "AIZTS INFOTECH PVT LTD",
-    startDate: "Aug 2024",
+    startDate: "Jul 2024",
     endDate: "Present",
     location: "Remote / Office",
     tech: ["React.js", "MERN", "PostgreSQL", "Prisma", "Tailwind", "ShadCN UI", "Redux", "TanStack Query"],
     description: [
-      "Delivered responsive, user-focused web applications for job portal, education, and jewelry e-commerce domains.",
-      "Built clean, scalable UI using React.js, MERN stack, PostgreSQL, Prisma, Tailwind CSS, and ShadCN UI.",
-      "Integrated APIs, optimized data flow, and ensured smooth frontend–backend communication.",
-      "Managed application state with Redux Toolkit and TanStack React Query for improved performance.",
-      "Enhanced UI/UX and cross-platform compatibility, ensuring mobile-first responsiveness.",
-      "Collaborated with cross-functional teams using Git, GitHub, Docker, Linux, and Postman.",
+       "At AIZTS Infotech Pvt. Ltd, I work as a Backend Developer responsible for designing and implementing scalable backend architectures for SaaS-based platforms.",
+       "My focus lies in building reliable APIs, optimizing database performance, and ensuring seamless communication between services.",
+      "I actively contribute to improving system performance and reliability through comprehensive testing, code optimization, and continuous integration practices.",
+      "Collaborating closely with cross-functional teams, I help deliver secure, high-performance backend solutions that support dynamic business needs and enhance overall product scalability."
     ],
     accent: "bg-gradient-to-br from-cyan-400 to-indigo-500",
   },
   {
     id: 2,
-    role: "Intern",
-    companyName: "AIZTS Infotech PVT LTD",
-    startDate: "May 2024",
-    endDate: "Aug 2024",
+    role: "Process Executive",
+    companyName: "Nvidia",
+    startDate: "Feb 2023",
+    endDate: " Sep 2023",
     location: "Pathruth Chowk, Solapur, Maharashtra",
     tech: ["HTML", "CSS", "JavaScript", "React"],
     description: [
-      "Developed and maintained responsive web interfaces using modern frontend technologies.",
-      "Managed and optimized PostgreSQL and MongoDB databases.",
-      "Integrated APIs to enhance frontend-backend communication.",
-      "Used Git for version control and collaborated in teams to improve user experience and performance.",
+      "AI Frameworks: Worked extensively with AI-based frameworks, contributing to the development, testing, and deployment of innovative solutions leveraging machine learning and artificial intelligence technologies.",
+    "Autonomous Automobiles: Gained hands-on experience in the field of autonomous vehicles, focusing on software integration, system testing, and ensuring performance reliability of advanced autonomous systems.",
+    "Quality Assurance: Played a pivotal role in quality assurance, conducting thorough testing to identify and resolve software bugs, ensuring optimal system performance, and maintaining high product quality standards."
     ],
     accent: "bg-gradient-to-br from-orange-300 to-purple-400",
   },
@@ -152,7 +149,7 @@ const Card = ({ job, i }) => {
                 <div className="h-2 rounded-full bg-primary" style={{ width: "72%" }} />
               </div>
               <div className="mt-3 text-xs text-base-content/70">
-                Worked with HTML, CSS Tailwind CSS, JavaScript, React js, Postgre SQL, MongoDB, Express Js, NodeJs, API Integeration. Git & GitHub
+                Worked with HTML, CSS, JavaScript, React js, Postgre SQL, MongoDB, Express Js, NodeJs, API Integeration. Git & GitHub
               </div>
             </div>
 
@@ -182,7 +179,7 @@ export default function WorkExperience() {
       <header className="text-center mb-8">
         <h1
           id="experience-heading"
-          className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600"
+          className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-600"
         >
           WORK EXPERIENCE
         </h1>

@@ -11,7 +11,7 @@ import {
   FaTimesCircle,
 } from "react-icons/fa";
 
-const ACCESS_KEY = "0c7e4e14-6446-4d5d-93a5-66d73a53764b";
+const ACCESS_KEY = "276eb250-123f-43a6-9db9-22aca0b556c1";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
@@ -227,7 +227,7 @@ export default function Contact() {
                   <FaEnvelope className="mt-1 text-primary" />
                   <div>
                     <div className="font-medium text-base-content">Email</div>
-                    <div className="text-xs text-base-content/70">saquibsayyed12345@gmail.com</div>
+                    <div className="text-xs text-base-content/70">saquibfarash0346@gmail.com</div>
                   </div>
                 </li>
 
@@ -235,7 +235,7 @@ export default function Contact() {
                   <FaPhone className="mt-1 text-primary" />
                   <div>
                     <div className="font-medium text-base-content">Phone</div>
-                    <div className="text-xs text-base-content/70">+91 73784 11134</div>
+                    <div className="text-xs text-base-content/70">+91 9767862018 </div>
                   </div>
                 </li>
 
@@ -253,10 +253,10 @@ export default function Contact() {
               <div>
                 <h4 className="text-sm font-medium mb-2 text-base-content">Find me on</h4>
                 <div className="flex items-center gap-3">
-                  <a href="https://github.com/saquibsayyedcoder" target="_blank" rel="noreferrer" className="btn btn-ghost btn-circle">
+                  <a href="https://github.com/saquibfarash24" target="_blank" rel="noreferrer" className="btn btn-ghost btn-circle">
                     <FaGithub />
                   </a>
-                  <a href="https://www.linkedin.com/in/saquib-arif-sayyed-62b88b1a1" target="_blank" rel="noreferrer" className="btn btn-ghost btn-circle">
+                  <a href="https://www.linkedin.com/in/saquib-farash-0b9a8a284/" target="_blank" rel="noreferrer" className="btn btn-ghost btn-circle">
                     <FaLinkedin />
                   </a>
                 </div>
@@ -270,7 +270,7 @@ export default function Contact() {
 
               <div className="mt-4">
                 <a
-                  href="mailto:saquibsayyed12345@gmail.com"
+                  href="mailto:saquibfarash0346@gmail.com"
                   className="btn btn-primary btn-sm w-full"
                 >
                   <FaEnvelope /> Email Me
@@ -279,34 +279,6 @@ export default function Contact() {
             </div>
 
             {/* Map card — responsive Google Maps iframe */}
-<div className="card bg-base-100 text-base-content shadow-lg rounded-2xl p-3 overflow-hidden">
-  <h4 className="px-3 pt-2 text-sm font-medium text-base-content">Location (Solapur)</h4>
-
-  <div className="p-3">
-    <div className="w-full rounded-lg overflow-hidden shadow-inner">
-      <iframe
-        title="Solapur, Maharashtra map"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d144678.9319965283!2d75.85179508596909!3d17.656085364723083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc5d082b54ac5d5%3A0x3c719de6c83710d0!2sSolapur%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1756915922395!5m2!1sen!2sin"
-        className="w-full h-48 md:h-56 lg:h-64 border-0"
-        loading="lazy"
-        allowFullScreen={true}
-        referrerPolicy="no-referrer-when-downgrade"
-      />
-    </div>
-
-    <div className="mt-3 px-3 text-xs text-base-content/70">
-      <p>Solapur, Maharashtra, India</p>
-      <a
-        href="https://www.google.com/maps/search/?api=1&query=Solapur+Maharashtra"
-        target="_blank"
-        rel="noreferrer"
-        className="link link-primary text-sm inline-flex items-center gap-2 mt-1"
-      >
-        Open in Google Maps
-      </a>
-    </div>
-  </div>
-</div>
 
           </aside>
         </div>

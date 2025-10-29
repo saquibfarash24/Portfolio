@@ -129,7 +129,7 @@ function Navbar() {
           <div className="flex-1">
             <div className="flex items-center gap-3">
               <img
-                src="/img4.jpg"
+                src="/s2.png"
                 alt="Profile"
                 className="h-10 w-10 rounded-full object-cover border-2 border-primary"
               />
@@ -138,11 +138,11 @@ function Navbar() {
                 onClick={(e) => scrollToSection(e, "#home")}
                 className="flex items-center gap-1 group"
               >
-                <span className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
+                <span className="text-lg md:text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-500 to-cyan-800">
                   SAQUIB<span className="text-primary">.</span>
                 </span>
-                <p className="hidden md:inline-block text-sm text-base-content/70 ml-2 group-hover:text-primary transition-colors">
-                  Frontend Developer | MERN PERN Stack | Software Engineer
+                <p className="hidden md:inline-block text-sm text-base-content/70 ml-2 group-hover:text-cyan-500 transition-colors">
+                  Backend Developer | PERN Stack | Software Engineer
                 </p>
               </a>
             </div>

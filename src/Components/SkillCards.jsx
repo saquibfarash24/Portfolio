@@ -3,20 +3,13 @@ import React, { useEffect, useRef, useState } from 'react';
 const skills = [
   { name: 'HTML', icon: '/html.png', type: 'Frontend' },
   { name: 'CSS', icon: '/css.jpg', type: 'Frontend' },
-  { name: 'Tailwind CSS', icon: '/tailwindcss.png', type: 'Frontend' },
   { name: 'JavaScript', icon: '/javascript.jpg', type: 'Frontend' },
   { name: 'React.js', icon: '/reactjs.png', type: 'Frontend' },
-  { name: 'Redux', icon: '/redux.png', type: 'Tool' },
-  { name: 'TanStack Query', icon: '/tanstack.jpeg', type: 'Tool' },
-  { name: 'shadcn UI', icon: '/shadcn.png', type: 'Tool' },
-  { name: 'Material UI', icon: '/material.png', type: 'Tool' },
-  { name: 'DaisyUI', icon: '/daisyUI1.png', type: 'Tool' },
   { name: 'GitHub', icon: '/github.png', type: 'Tool' },
   { name: 'Node.js', icon: '/node.png', type: 'Backend' },
   { name: 'Express.js', icon: '/express.png', type: 'Backend' },
   { name: 'MongoDB', icon: '/mongodb.jpg', type: 'Database' },
   { name: 'PostgreSQL/Prisma ORM', icon: '/hathi.png', type: 'Database' },
-  { name: 'Java', icon: '/java.png', type: 'Backend' },
 ];
 
 // Color mapping that works in light & dark via DaisyUI semantic classes
@@ -84,7 +77,7 @@ export default function SkillCard() {
     >
       <div className="mb-12 text-center">
         <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-600">
             MY SKILL SET
           </span>
         </h2>

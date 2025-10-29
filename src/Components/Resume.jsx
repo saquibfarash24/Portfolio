@@ -11,11 +11,12 @@ import {
 } from "react-icons/fa";
 import { DiMongodb } from "react-icons/di";
 import { RiReactjsFill } from "react-icons/ri";
-import { SiPostgresql, SiTailwindcss, SiRedux } from "react-icons/si";
+import { SiPostgresql } from "react-icons/si";
+import { SiPrisma } from "react-icons/si";
 
 /* Data */
 const skills = [
-  "JavaScript", "ReactJS", "NodeJS", "MongoDB", "ExpressJS", "TailwindCSS",
+  "JavaScript", "ReactJS", "NodeJS", "MongoDB", "ExpressJS",
   "Git", "GitHub", "RESTful APIs", "HTML5", "CSS3", "Java"
 ];
 
@@ -26,28 +27,36 @@ const softSkills = [
 
 const experience = [
   {
-    company: "Aizts Info Tech",
-    role: "Junior Software Engineer",
-    duration: "Aug 2024 - Present",
-    bullets: [
-      "Built and maintained responsive web applications using React and Tailwind CSS.",
-      "Managed MongoDB and PostgreSQL databases for scalable data storage.",
-      "Integrated RESTful APIs to streamline frontend-backend communication.",
-      "Improved application performance and deployed user-friendly interfaces.",
-      "Collaborated with cross-functional teams to meet project goals.",
-      "Utilized Git for version control and workflow management.",
-      "Contributed to core features that enhanced user experience.",
-    ]
-  },
+  company: "AIZTS Infotech Pvt. Ltd",
+  role: "Backend Developer",
+  duration: "Jul 2024 - Present",
+  bullets: [
+    "Designed and developed scalable backend architectures using Node.js, Express, and Prisma ORM.",
+    "Managed PostgreSQL and MongoDB databases with optimized schemas and efficient query handling.",
+    "Built and integrated RESTful APIs to enable seamless data flow across frontend and backend systems.",
+    "Implemented authentication, authorization (JWT & RBAC), and validation layers for enhanced security.",
+    "Optimized server performance, improved response times, and ensured application reliability.",
+    "Collaborated with frontend developers to deliver end-to-end product functionality and stability.",
+    "Used Git and GitHub for version control, code reviews, and agile development workflows."
+  ]
+}
+
 ];
 
 const education = [
-  {
-    institution: "Bharti Vidyapeeth University",
-    degree: "BCA & MCA in Computer Science",
-    duration: "2018 - 2024",
-    location: "Solapur, Maharashtra",
-  },
+{
+  institution: "Solapur University",
+  degree: "Bachelor of Computer Applications (BCA)",
+  duration: "2018 - 2022",
+  location: "Solapur, Maharashtra",
+},
+{
+  institution: "Shivaji University, Kolhapur",
+  degree: "Master of Computer Applications (MCA)",
+  duration: "2022 - 2024",
+  location: "Kolhapur, Maharashtra",
+},
+
 ];
 
 const projects = [
@@ -79,7 +88,7 @@ const projects = [
     ]
   },
   {
-    title: "School Super Admin Dashboard",
+    title: "School Management System",
     bullets: [
       "Designed and developed a multi-role school management system.",
       "Super Admin can create and manage multiple schools with independent logins.",
@@ -87,16 +96,7 @@ const projects = [
       "Ensured a professional, mobile-responsive dashboard using React & DaisyUI.",
     ]
   },
-  {
-    title: "Chat Application (MERN + Socket.IO)",
-    bullets: [
-      "Real-time chat app with one-to-one and group conversations using Socket.IO.",
-      "Features: online presence, typing indicators, read receipts, and message history.",
-      "Media sharing (images/files), message search, and notification system.",
-      "Built secure auth (JWT), scalable message storage in MongoDB, and Redis for pub/sub in production.",
-    ],
-    tech: ["React", "Node", "Express", "MongoDB", "Socket.IO", "Redis"]
-  }
+ 
 ];
 
 const delayStyle = (i, base = 80) => ({ transitionDelay: `${i * base}ms` });
@@ -130,20 +130,20 @@ export default function ResumePage() {
           <div className="flex items-center gap-4">
             <div className="avatar">
               <div className="w-24 md:w-28 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                <img src="/img4.jpg" alt="Saquib Arif Sayyed" />
+                <img src="/s2.png" alt="Saquib Sajid Farash" />
               </div>
             </div>
             <div>
               <h1 className="text-2xl md:text-3xl lg:text-4xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600">
-                Saquib Arif Sayyed
+                Saquib Sajid Farash
               </h1>
-              <p className="text-sm md:text-base text-base-content/80 mt-1">Full Stack Developer — MERN & PERN Stack</p>
+              <p className="text-sm md:text-base text-base-content/80 mt-1">Full Stack Developer - Backend Developer - Software Engineer</p>
               <div className="flex flex-wrap items-center gap-x-6 gap-y-1 mt-2 text-sm text-base-content/70">
                 <div className="flex items-center gap-1.5">
-                  <FaEnvelope className="text-xs" /> saquibsayyed12345@gmail.com
+                  <FaEnvelope className="text-xs" /> saquibfarash0346@gmail.com
                 </div>
                 <div className="flex items-center gap-1.5">
-                  <FaPhone className="text-xs" /> +91 73784 11134
+                  <FaPhone className="text-xs" /> +91 9767862018
                 </div>
                 <div className="flex items-center gap-1.5">
                   <FaMapMarkerAlt className="text-xs" /> Solapur, India
@@ -182,8 +182,7 @@ export default function ResumePage() {
                 Profile Summary
               </h2>
               <p className="leading-relaxed text-base-content/90">
-                Passionate full-stack developer with hands-on experience building scalable web applications using React, Node.js, Express, MongoDB, and PostgreSQL. Skilled in state management (Redux, TanStack Query), RESTful APIs, Prisma ORM, and responsive UI design with Tailwind CSS. Committed to writing clean, maintainable code and delivering exceptional user experiences.
-              </p>
+Passionate backend developer with hands-on experience in building scalable and secure server-side applications using Node.js, Express, Prisma ORM, PostgreSQL, and MongoDB. Skilled in designing RESTful APIs, implementing authentication and authorization, and optimizing database performance for high efficiency. Committed to writing clean, maintainable code, improving system scalability, and delivering robust backend solutions that power exceptional user experiences.              </p>
             </section>
 
             {/* Technical Skills */}
@@ -200,10 +199,10 @@ export default function ResumePage() {
                 {[
                   { name: "React.js", level: 90, icon: <RiReactjsFill className="text-blue-500" /> },
                   { name: "Node.js", level: 85, icon: <span className="text-green-500">⬢</span> },
+                  { name: "Express.js", level: 85, icon: <span className="text-red-500">⬢</span> },
                   { name: "MongoDB", level: 80, icon: <DiMongodb className="text-green-600" /> },
                   { name: "PostgreSQL", level: 76, icon: <SiPostgresql className="text-blue-700" /> },
-                  { name: "Tailwind CSS", level: 88, icon: <SiTailwindcss className="text-cyan-500" /> },
-                  { name: "Redux / TanStack", level: 82, icon: <SiRedux className="text-purple-600" /> },
+                  { name: "Prisma-ORM", level: 76, icon: <SiPrisma className="text-purple-700" /> },
                 ].map((s, i) => (
                   <div key={s.name} className="space-y-2">
                     <div className="flex items-center justify-between">
@@ -260,10 +259,7 @@ export default function ResumePage() {
                         ))}
                       </div>
                     )}
-                    <div className="flex gap-2">
-                      <a href="#" className="btn btn-xs btn-outline">Live Demo</a>
-                      <a href="#" className="btn btn-xs btn-ghost">View Code</a>
-                    </div>
+                   
                   </article>
                 ))}
               </div>
@@ -286,8 +282,8 @@ export default function ResumePage() {
                   <FaEnvelope className="mt-1 text-primary flex-shrink-0" />
                   <div>
                     <div className="font-medium">Email</div>
-                    <a href="mailto:saquibsayyed12345@gmail.com" className="text-base-content/80 hover:text-primary transition-colors">
-                      saquibsayyed12345@gmail.com
+                    <a href="mailto:saquibfarash0346@gmail.com" className="text-base-content/80 hover:text-primary transition-colors">
+                      saquibfarash0346@gmail.com
                     </a>
                   </div>
                 </div>
@@ -295,7 +291,7 @@ export default function ResumePage() {
                   <FaPhone className="mt-1 text-primary flex-shrink-0" />
                   <div>
                     <div className="font-medium">Phone</div>
-                    <div className="text-base-content/80">+91 73784 11134</div>
+                    <div className="text-base-content/80">+91 9767862018</div>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
@@ -308,7 +304,7 @@ export default function ResumePage() {
                 <div className="pt-2 mt-3 border-t border-base-200">
                   <div className="flex gap-3">
                     <a
-                      href="https://github.com/saquibsayyedcoder"
+                      href="https://github.com/saquibfarash24"
                       target="_blank"
                       rel="noreferrer"
                       className="btn btn-circle btn-outline hover:btn-primary transition-all"
@@ -317,7 +313,7 @@ export default function ResumePage() {
                       <FaGithub />
                     </a>
                     <a
-                      href="https://www.linkedin.com/in/saquib-arif-sayyed-62b88b1a1"
+                      href="https://www.linkedin.com/in/saquib-farash-0b9a8a284/"
                       target="_blank"
                       rel="noreferrer"
                       className="btn btn-circle btn-outline hover:btn-primary transition-all"
