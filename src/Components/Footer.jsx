@@ -94,6 +94,9 @@ export default function Footer() {
                 <a href="/skills" className="link link-hover">Skills</a>
               </li>
               <li>
+                <a href="/experience" className="link link-hover">Work Experience</a>
+              </li>
+              <li>
                 <a href="/contact" className="link link-hover">Contact</a>
               </li>
             </ul>

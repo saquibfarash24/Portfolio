@@ -1,206 +1,146 @@
-// Home.jsx
-import React, { useEffect, useState, useRef } from "react";
-import {
-  FaLinkedin, FaInstagram, FaGithub, FaYoutube
-} from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa";
-import { DiMongodb } from "react-icons/di";
-import { SiExpress } from "react-icons/si";
-import { RiReactjsFill, RiNextjsFill } from "react-icons/ri";
-import { SiTypescript } from "react-icons/si";
-import saquibF from "/s2.png"; // public folder
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BiLogoPostgresql } from "react-icons/bi";
-import { SiPrisma } from "react-icons/si";
-import { IoLogoJavascript } from "react-icons/io5";
+import saquibF from "/s2.png"; // your image in public folder
 
-
-
-/* --- data with hover classes --- */
-const SOCIALS = [
-  {
-    id: "li",
-    icon: <FaLinkedin />,
-    href: "https://www.linkedin.com/in/saquib-farash-0b9a8a284/",
-    // LinkedIn blue on hover
-    hoverClass:
-      "hover:bg-[rgba(10,102,194,0.12)] hover:text-[#0A66C2] focus:ring-[#0A66C2]/30",
-  },
-
-  {
-    id: "gh",
-    icon: <FaGithub />,
-    href: "https://github.com/saquibfarash24",
-    // GitHub dark hover
-    hoverClass: "hover:bg-[rgba(0,0,0,0.12)] hover:text-[#111827] focus:ring-[#111827]/30",
-  },
-
-];
-
-const TECH = [
-  { id: "mdb", icon: <DiMongodb />, hoverClass: "hover:bg-[rgba(16,185,129,0.12)] hover:text-[#10B981] focus:ring-[#10B981]/30" },
-  { id: "ex", icon: <SiExpress />, hoverClass: "hover:bg-[rgba(250,204,21,0.12)] hover:text-[#F59E0B] focus:ring-[#F59E0B]/30" },
-  { id: "node", icon: <FaNodeJs />, hoverClass: "hover:bg-[rgba(34,197,94,0.12)] hover:text-[#22C55E] focus:ring-[#22C55E]/30" },
-  { id: "next", icon: <SiPrisma />, hoverClass: "hover:bg-[rgba(17,24,39,0.12)] hover:text-[#0F172A] focus:ring-[#0F172A]/30" },
-   { 
-  id: "pg", 
-  icon: <BiLogoPostgresql />, 
-  hoverClass: "hover:bg-[rgba(14,165,233,0.12)] hover:text-[#0EA5E9] focus:ring-[#0EA5E9]/30" 
-},
-{ 
-  id: "ts", 
-  icon: <IoLogoJavascript />, 
-  hoverClass: "hover:bg-[#001F3F] hover:text-[#FFD700] focus:ring-[#001F3F]/40" 
-}
-
-
-];
-
-const TYPED_WORDS = ["Developer", "Programmer", "Coder"];
+const TYPED_WORDS = ["Backend Developer", "Programmer", "Problem Solver"];
 
 export default function Home() {
   const [mounted, setMounted] = useState(false);
-
-  // Typing effect states
   const [wordIndex, setWordIndex] = useState(0);
   const [subIndex, setSubIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setMounted(true), 80);
+    const t = setTimeout(() => setMounted(true), 100);
     return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {
     const currentWord = TYPED_WORDS[wordIndex];
-
-    // pause at end of word before deleting
     if (!isDeleting && subIndex === currentWord.length + 1) {
-      const pause = setTimeout(() => setIsDeleting(true), 700);
+      const pause = setTimeout(() => setIsDeleting(true), 1000);
       return () => clearTimeout(pause);
     }
-
-    // when fully deleted move to next word
     if (isDeleting && subIndex === 0) {
       setIsDeleting(false);
-      setWordIndex((w) => (w + 1) % TYPED_WORDS.length);
+      setWordIndex((prev) => (prev + 1) % TYPED_WORDS.length);
       return;
     }
-
-    const delta = isDeleting ? 60 : 120;
-    const id = setTimeout(() => {
-      setSubIndex((s) => s + (isDeleting ? -1 : 1));
-    }, delta);
-
-    return () => clearTimeout(id);
+    const speed = isDeleting ? 60 : 120;
+    const timer = setTimeout(() => {
+      setSubIndex((prev) => prev + (isDeleting ? -1 : 1));
+    }, speed);
+    return () => clearTimeout(timer);
   }, [subIndex, isDeleting, wordIndex]);
 
-  const currentShown = TYPED_WORDS[wordIndex].slice(0, subIndex);
+  const currentText = TYPED_WORDS[wordIndex].slice(0, subIndex);
 
   return (
     <section
-    id="home"
-      name="home"
-      className="relative bg-cover bg-center bg-no-repeat bg-fixed text-white"
-      style={{ backgroundImage: "url(/codeimg.jpeg)" }}
+      id="home"
+      className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white overflow-hidden"
     >
       <style>{`
         @keyframes floaty {
-          0% { transform: translateY(0) }
-          50% { transform: translateY(-8px) }
-          100% { transform: translateY(0) }
+          0% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+          100% { transform: translateY(0); }
         }
-        .floaty { animation: floaty 3.6s ease-in-out infinite; }
+        .floaty { animation: floaty 4s ease-in-out infinite; }
         .typed-caret {
-          width: 2px;
-          height: 1.1em;
-          background: rgba(16,185,129,0.95);
+          width: 3px;
+          height: 1.2em;
+          background: #22d3ee;
           display: inline-block;
-          margin-left: 6px;
+          margin-left: 4px;
           animation: blink 1s steps(2, start) infinite;
         }
         @keyframes blink { 50% { opacity: 0 } }
       `}</style>
 
-      <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
+      {/* Subtle glowing background shapes */}
+      <div className="absolute w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl top-10 left-0 animate-pulse"></div>
+      <div className="absolute w-72 h-72 bg-pink-500/10 rounded-full blur-3xl bottom-10 right-0 animate-pulse"></div>
 
-      <div className="relative z-10 max-w-screen-2xl mx-auto px-4 md:px-20 py-20">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-8">
-          {/* Image */}
-          <div
-            className={`md:w-1/2 order-1 md:order-2 mb-8 md:mb-0 flex justify-center transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
-          >
-            <div className="relative group">
-              <img
-                src={saquibF}
-                alt="Saqib"
-                className="w-48 h-48 md:w-96 md:h-96 rounded-full object-cover border-4 border-cyan-400 shadow-2xl floaty transform transition-all duration-500 group-hover:scale-105"
-              />
-              <span className="absolute inset-0 rounded-full ring-0 group-hover:ring-8 group-hover:ring-green-300/20 transition-all duration-500" />
-            </div>
+      <div className="relative z-10 w-full max-w-screen-xl px-6 md:px-12 py-20 flex flex-col md:flex-row items-center justify-between gap-12">
+
+        {/* Text Section */}
+        <div
+          className={`md:w-1/2 space-y-6 text-center md:text-left transition-all duration-700 ${
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold leading-snug">
+            Hi, I’m{" "}
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+              Saquib
+            </span>
+            <br />
+            <span className="text-cyan-400">{currentText}</span>
+            <span className="typed-caret" aria-hidden />
+          </h1>
+
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed max-w-md mx-auto md:mx-0">
+            I’m a passionate backend developer focused on building scalable and secure APIs. 
+            I enjoy transforming ideas into efficient digital solutions with 
+            <span className="text-cyan-400 font-semibold"> Node.js</span>, 
+            <span className="text-cyan-400 font-semibold"> Express</span>, and 
+            <span className="text-cyan-400 font-semibold"> PostgreSQL</span>. 
+            I love writing clean, maintainable code and exploring new technologies.
+          </p>
+
+          <div className="flex justify-center md:justify-start gap-4 mt-8">
+            <Link
+              to="/resume"
+              className="px-8 py-3 bg-cyan-500 text-white rounded-full font-semibold hover:bg-cyan-600 hover:-translate-y-1 transition-all shadow-lg"
+            >
+              View Resume
+            </Link>
+            <a
+              href="#contact"
+              className="px-8 py-3 border border-cyan-400 text-cyan-300 rounded-full font-semibold hover:bg-cyan-400 hover:text-white hover:-translate-y-1 transition-all"
+            >
+              Contact Me
+            </a>
           </div>
 
-          {/* Text */}
-          <div className={`md:w-1/2 space-y-6 order-2 md:order-1 text-center md:text-left transition-all duration-700 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-            <span className="text-lg font-medium text-white tracking-wide">Welcome To My Space</span>
-
-            <div className="text-3xl md:text-4xl font-extrabold leading-tight flex flex-wrap items-baseline justify-center md:justify-start gap-3">
-              <h1 className="text-white/95">Hello, I'm a</h1>
-              <div className="text-cyan-500">
-                <span className="inline-block">{currentShown}</span>
-                <span className="typed-caret" aria-hidden />
-              </div>
+          {/* Tag Line Section */}
+          <div className="mt-10">
+            <div className="flex flex-wrap justify-center md:justify-start gap-3 text-xs sm:text-sm">
+              {[
+                "Node.js",
+                "Express.js",
+                "PostgreSQL",
+                "Prisma ORM",
+                "RESTful APIs",
+                "Authentication",
+                "Scalable Backend",
+                "Clean Architecture",
+              ].map((tag, i) => (
+                <span
+                  key={i}
+                  className="px-3 py-1 rounded-full bg-white/10 border border-white/10 text-gray-200 hover:bg-cyan-500/20 transition-all"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
+          </div>
+        </div>
 
-            <p className="text-sm md:text-base text-white/90 leading-relaxed max-w-xl mx-auto md:mx-0">
-As a backend developer passionate about clean architecture and database design, I craft robust RESTful and GraphQL APIs using Node.js, Express, and PostgreSQL. With experience in Prisma ORM and JWT-based authentication, I ensure secure, optimized, and maintainable server-side solutions that scale effortlessly.            </p>
-
-            {/* Socials & Tech */}
-            <div className="flex flex-col md:flex-row justify-between items-center gap-8 mt-6">
-              {/* Social Icons */}
-              <div className="w-full md:w-auto">
-                <h2 className="text-lg font-semibold mb-3 text-white/95">Available On</h2>
-                <div className="flex space-x-4 justify-center md:justify-start">
-                  {SOCIALS.map((s, idx) => (
-                    <a
-                      key={s.id}
-                      href={s.href}
-                      target="_blank"
-                      rel="noreferrer"
-                      className={`inline-flex items-center justify-center p-2 rounded-md transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-offset-2 ${s.hoverClass} bg-white/5 text-white/95`}
-                      style={{ transitionDelay: `${90 * idx}ms` }}
-                      aria-label={s.id}
-                    >
-                      <span className="text-2xl">{s.icon}</span>
-                    </a>
-                  ))}
-                </div>
-              </div>
-
-              {/* Tech Stack */}
-              <div className="w-full md:w-auto">
-                <h2 className="text-lg font-semibold mb-3 text-white/95">Currently Working On</h2>
-                <div className="flex space-x-4 justify-center md:justify-start">
-                  {TECH.map((t, idx) => (
-                    <div
-                      key={t.id}
-                      className={`inline-flex items-center justify-center p-2 cursor-pointer rounded-md transition-all duration-300 ease-out focus:outline-none focus:ring-4 focus:ring-offset-2 ${t.hoverClass} bg-white/5 text-white/95`}
-                      style={{ transitionDelay: `${90 * idx}ms` }}
-                      aria-hidden
-                    >
-                      <span className="text-3xl">{t.icon}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* Resume Button */}
-            <Link to="/resume" className="inline-block">
-              <button className="mt-6 px-6 py-3 bg-cyan-400 rounded-lg hover:bg-cyan-600 transition transform hover:-translate-y-1 shadow-md">
-                View Resume
-              </button>
-            </Link>
+        {/* Image Section */}
+        <div
+          className={`md:w-1/2 flex justify-center transition-all duration-700 ${
+            mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"
+          }`}
+        >
+          <div className="relative">
+            <div className="absolute inset-0 bg-cyan-400/20 rounded-full blur-2xl" />
+            <img
+              src={saquibF}
+              alt="Saqib"
+              className="relative w-52 h-52 sm:w-72 sm:h-72 md:w-96 md:h-96 object-cover rounded-full border-4 border-cyan-400 shadow-2xl floaty transition-transform duration-700 hover:scale-105"
+            />
           </div>
         </div>
       </div>

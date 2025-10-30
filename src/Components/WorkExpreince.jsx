@@ -1,8 +1,8 @@
 // WorkExperience.jsx
 import React from "react";
-import { FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaTasks } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { FaBuilding, FaCalendarAlt, FaMapMarkerAlt, FaTasks } from "react-icons/fa";
 
 const workExperience = [
   {
@@ -11,188 +11,117 @@ const workExperience = [
     companyName: "AIZTS INFOTECH PVT LTD",
     startDate: "Jul 2024",
     endDate: "Present",
-    location: "Remote / Office",
-    tech: ["React.js", "MERN", "PostgreSQL", "Prisma", "Tailwind", "ShadCN UI", "Redux", "TanStack Query"],
+    location: "Solapur, Maharashtra",
+    tech: ["React.js", "JavaScript", "PostgreSQL", "Prisma ORM", "Node.js", "Express.js"],
     description: [
-       "At AIZTS Infotech Pvt. Ltd, I work as a Backend Developer responsible for designing and implementing scalable backend architectures for SaaS-based platforms.",
-       "My focus lies in building reliable APIs, optimizing database performance, and ensuring seamless communication between services.",
-      "I actively contribute to improving system performance and reliability through comprehensive testing, code optimization, and continuous integration practices.",
-      "Collaborating closely with cross-functional teams, I help deliver secure, high-performance backend solutions that support dynamic business needs and enhance overall product scalability."
+      "Design and implement scalable backend architectures for SaaS-based platforms.",
+      "Build reliable APIs, optimize database performance, and ensure seamless communication between services.",
+      "Improve system reliability through testing, code optimization, and CI/CD practices.",
+      "Collaborate with cross-functional teams to deliver secure, high-performance solutions.",
     ],
-    accent: "bg-gradient-to-br from-cyan-400 to-indigo-500",
+    accent: "from-cyan-400 to-indigo-500",
   },
   {
     id: 2,
     role: "Process Executive",
-    companyName: "Nvidia",
+    companyName: "NVIDIA",
     startDate: "Feb 2023",
-    endDate: " Sep 2023",
-    location: "Pathruth Chowk, Solapur, Maharashtra",
+    endDate: "Sep 2023",
+    location: "Pune, Maharashtra",
     tech: ["HTML", "CSS", "JavaScript", "React"],
     description: [
-      "AI Frameworks: Worked extensively with AI-based frameworks, contributing to the development, testing, and deployment of innovative solutions leveraging machine learning and artificial intelligence technologies.",
-    "Autonomous Automobiles: Gained hands-on experience in the field of autonomous vehicles, focusing on software integration, system testing, and ensuring performance reliability of advanced autonomous systems.",
-    "Quality Assurance: Played a pivotal role in quality assurance, conducting thorough testing to identify and resolve software bugs, ensuring optimal system performance, and maintaining high product quality standards."
+      "Worked with AI-based frameworks and contributed to ML solution development.",
+      "Gained experience with autonomous vehicles and system integration.",
+      "Led quality assurance initiatives ensuring optimal system performance.",
     ],
-    accent: "bg-gradient-to-br from-orange-300 to-purple-400",
+    accent: "from-orange-400 to-purple-500",
   },
 ];
 
-const Pill = ({ children, icon, className = "" }) => (
-  <span
-    className={`inline-flex items-center gap-2 text-xs md:text-sm px-2 py-1 rounded-full bg-base-200/60 text-base-content/90 ${className}`}
+const WorkExperienceCard = ({ job, i }) => (
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.5, delay: i * 0.1 }}
+    whileHover={{ scale: 1.02 }}
+    className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all rounded-2xl border border-base-200"
   >
-    {icon && <span className="text-base-content/70">{icon}</span>}
-    <span className="truncate">{children}</span>
-  </span>
-);
+    {/* Accent Border */}
+    <div className={`h-2 bg-gradient-to-r ${job.accent} rounded-t-2xl`} />
 
-// ✅ FIXED: Now uses jobId + index to guarantee unique keys
-const TechPills = ({ tech = [], jobId }) => (
-  <div className="flex flex-wrap gap-2 mt-3">
-    {tech.map((t, idx) => (
-      <span
-        key={`${jobId}-${idx}`} // 🔑 Unique per job + position
-        className="text-[11px] hover:bg-gray-300 cursor-pointer md:text-xs px-2 py-1 rounded-full bg-base-200/40 text-base-content/85"
-      >
-        {t}
-      </span>
-    ))}
-  </div>
-);
-
-const Card = ({ job, i }) => {
-  const period = `${job.startDate} — ${job.endDate}`;
-  const isOngoing = job.endDate === "Present";
-
-  return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 16 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: i * 0.06, duration: 0.45 }}
-      whileHover={{ scale: 1.02 }}
-      className="relative w-full overflow-hidden rounded-2xl shadow-lg"
-      aria-labelledby={`job-${job.id}-title`}
-    >
-      {/* Decorative accent stripe */}
-      <div className={`h-2 ${job.accent} rounded-t-2xl`} />
-
-      {/* Content panel */}
-      <div className="p-4 md:p-6 bg-base-100 text-base-content">
-        <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
-          {/* Left block: icon + main info */}
-          <div className="flex gap-4 flex-1 min-w-0">
-            <div className="flex flex-col items-center md:items-start">
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-lg flex items-center justify-center bg-primary/10 text-primary ring-1 ring-primary/20">
-                <FaBuilding className="text-xl md:text-2xl" />
-              </div>
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <h3 id={`job-${job.id}-title`} className="text-lg md:text-xl font-semibold leading-tight truncate">
-                {job.companyName}
-              </h3>
-
-              <div className="mt-1 md:mt-2 text-sm md:text-base text-base-content/85 font-medium">
-                {job.role}
-              </div>
-
-              <div className="mt-3 flex flex-col sm:flex-row sm:flex-wrap sm:items-center gap-2 text-sm">
-                <Pill icon={<FaCalendarAlt />}>{period}</Pill>
-                <Pill icon={<FaMapMarkerAlt />}>{job.location}</Pill>
-              </div>
-
-              {/* ✅ Pass jobId to ensure unique keys */}
-              <TechPills tech={job.tech} jobId={job.id} />
-            </div>
+    <div className="card-body p-6">
+      {/* Header */}
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+        <div className="flex items-center gap-4">
+          <div className="p-3 bg-primary/10 text-primary rounded-xl">
+            <FaBuilding className="text-2xl" />
           </div>
-
-          {/* Right block: status + CTA */}
-          <div className="flex md:flex-col items-center md:items-end gap-3">
-            <div className="text-sm text-base-content/70 text-center md:text-right">
-              <div className="font-medium">Status</div>
-              <div className="text-lg md:text-xl font-extrabold text-base-content mt-1">
-                {isOngoing ? "Ongoing" : job.endDate}
-              </div>
-              <div className="text-xs text-base-content/60 mt-1 hidden md:block">{job.startDate}</div>
-            </div>
-
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-semibold bg-primary text-white shadow-md hover:brightness-95 transition"
-            >
-              Contact
-            </Link>
+          <div>
+            <h2 className="card-title text-xl font-bold">{job.companyName}</h2>
+            <p className="text-sm text-base-content/70 font-medium">{job.role}</p>
           </div>
         </div>
 
-        {/* Description */}
-        <div className="mt-4 md:mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="md:col-span-2">
-            <div className="flex items-center gap-2 mb-3 text-base-content">
-              <FaTasks />
-              <span className="font-semibold">What I shipped</span>
-            </div>
-
-            <ul className="list-disc pl-5 space-y-2 text-sm md:text-base text-base-content/85">
-              {job.description.map((d, idx) => (
-                <li key={idx} className="leading-relaxed">{d}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="flex flex-col justify-between">
-            <div>
-              <div className="text-base-content/85 font-medium mb-2">Key skills</div>
-              <div className="w-full bg-base-200 rounded-full h-2 overflow-hidden">
-                <div className="h-2 rounded-full bg-primary" style={{ width: "72%" }} />
-              </div>
-              <div className="mt-3 text-xs text-base-content/70">
-                Worked with HTML, CSS, JavaScript, React js, Postgre SQL, MongoDB, Express Js, NodeJs, API Integeration. Git & GitHub
-              </div>
-            </div>
-
-            <div className="mt-4 md:mt-0">
-              <Link
-                to="/projects"
-                className="btn btn-ghost w-full md:w-auto"
-                aria-label="View projects"
-              >
-                View Projects
-              </Link>
-            </div>
-          </div>
+        <div className="text-right">
+          <p className="badge badge-primary text-xs py-3 px-4">
+            {job.endDate === "Present" ? "Present" : `${job.startDate} - ${job.endDate}`}
+          </p>
+          <p className="text-xs mt-1 text-base-content/70">{job.location}</p>
         </div>
       </div>
-    </motion.article>
-  );
-};
+
+      {/* Tech Stack */}
+      <div className="flex flex-wrap gap-2 mt-3">
+        {job.tech.map((tech, idx) => (
+          <div key={idx} className="badge badge-outline text-xs py-2 px-3 hover:badge-primary transition">
+            {tech}
+          </div>
+        ))}
+      </div>
+
+      {/* Description */}
+      <div className="divider my-4"></div>
+      <div>
+        <div className="flex items-center gap-2 mb-2 font-semibold text-base-content">
+          <FaTasks /> <span>Key Responsibilities</span>
+        </div>
+        <ul className="list-disc pl-5 text-sm leading-relaxed space-y-2 text-base-content/80">
+          {job.description.map((desc, idx) => (
+            <li key={idx}>{desc}</li>
+          ))}
+        </ul>
+      </div>
+
+      {/* Footer */}
+      <div className="card-actions justify-between mt-6">
+        <div className="text-xs text-base-content/70">
+          <FaCalendarAlt className="inline mr-1 text-primary/70" />
+          {job.startDate} — {job.endDate}
+        </div>
+        <div className="flex gap-3">
+      
+          
+        </div>
+      </div>
+    </div>
+  </motion.div>
+);
 
 export default function WorkExperience() {
   return (
-    <section
-      id="experience"
-      className="max-w-6xl mx-auto px-4 sm:px-8 py-12"
-      aria-labelledby="experience-heading"
-    >
-      <header className="text-center mb-8">
-        <h1
-          id="experience-heading"
-          className="text-3xl md:text-4xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-indigo-600"
-        >
-          WORK EXPERIENCE
+    <section id="exp" className="max-w-6xl mx-auto px-4 sm:px-6 py-16">
+      <div className="text-center mb-12">
+        <h1 className="text-3xl md:text-4xl font-extrabold bg-gradient-to-r from-cyan-400 to-indigo-600 text-transparent bg-clip-text">
+          Work Experience
         </h1>
         <p className="mt-3 text-sm md:text-base text-base-content/70 max-w-2xl mx-auto">
-          Carefully crafted roles that focus on polish, performance and production-ready code.
+          A showcase of my professional journey, where I crafted scalable, performant, and production-ready software.
         </p>
-      </header>
+      </div>
 
-      <div className="space-y-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {workExperience.map((job, idx) => (
-          <div key={job.id} className="relative">
-            <Card job={job} i={idx} />
-          </div>
+          <WorkExperienceCard key={job.id} job={job} i={idx} />
         ))}
       </div>
     </section>

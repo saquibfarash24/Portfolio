@@ -1,145 +1,117 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
 const skills = [
-  { name: 'HTML', icon: '/html.png', type: 'Frontend' },
-  { name: 'CSS', icon: '/css.jpg', type: 'Frontend' },
-  { name: 'JavaScript', icon: '/javascript.jpg', type: 'Frontend' },
-  { name: 'React.js', icon: '/reactjs.png', type: 'Frontend' },
-  { name: 'GitHub', icon: '/github.png', type: 'Tool' },
-  { name: 'Node.js', icon: '/node.png', type: 'Backend' },
-  { name: 'Express.js', icon: '/express.png', type: 'Backend' },
-  { name: 'MongoDB', icon: '/mongodb.jpg', type: 'Database' },
-  { name: 'PostgreSQL/Prisma ORM', icon: '/hathi.png', type: 'Database' },
+  { name: "HTML", icon: "/html.png", type: "Frontend" },
+  { name: "CSS", icon: "/css.jpg", type: "Frontend" },
+  { name: "JavaScript", icon: "/javascript.jpg", type: "Frontend" },
+  { name: "React.js", icon: "/reactjs.png", type: "Frontend" },
+  { name: "GitHub", icon: "/github.png", type: "Tool" },
+  { name: "Node.js", icon: "/node.png", type: "Backend" },
+  { name: "Express.js", icon: "/express.png", type: "Backend" },
+  { name: "MongoDB", icon: "/mongodb.jpg", type: "Database" },
+  { name: "PostgreSQL / Prisma ORM", icon: "/hathi.png", type: "Database" },
 ];
 
-// Color mapping that works in light & dark via DaisyUI semantic classes
-const typeClasses = {
-  Frontend: 'badge-primary',
-  Backend: 'badge-success',
-  Database: 'badge-warning',
-  Tool: 'badge-accent',
-  default: 'badge-neutral',
+const colorMap = {
+  Frontend: "bg-gradient-to-r from-pink-400 to-rose-500",
+  Backend: "bg-gradient-to-r from-green-400 to-emerald-500",
+  Database: "bg-gradient-to-r from-yellow-400 to-orange-500",
+  Tool: "bg-gradient-to-r from-blue-400 to-sky-500",
 };
 
-function getSkillDesc(name) {
-  const map = {
-    HTML: 'Semantic markup and accessible HTML5 structure.',
-    CSS: 'Modern CSS, responsive layouts and animations.',
-    'Tailwind CSS': 'Utility-first styling, responsive design.',
-    JavaScript: 'ES6+, DOM, async/await, and modern patterns.',
-    'React.js': 'Component design, hooks, state management.',
-    Redux: 'App-level state management and middleware patterns.',
-    'TanStack Query': 'Server state management and caching.',
-    'shadcn UI': 'Composable UI primitives and design consistency.',
-    'Material UI': 'Component library for quick, accessible UIs.',
-    'DaisyUI': 'Tailwind plugin for component-ready classes.',
-    'Node.js': 'Server-side JS, event-driven architecture.',
-    'Express.js': 'REST APIs, middleware, route handling.',
-    MongoDB: 'NoSQL modeling, aggregation pipelines.',
-    PostgreSQL: 'Relational modeling and SQL optimization.',
-    GitHub: 'Version control, PRs, branching workflows.',
-    Java: 'OOP, backend fundamentals and JVM ecosystem.',
-  };
-  return map[name] ?? 'Experienced with this technology.';
-}
+export default function SkillSection() {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef();
 
-export default function SkillCard() {
-  const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-
-  // Trigger animation on scroll into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.15 }
     );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
-    };
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <section
       id="skills"
-      ref={sectionRef}
-      className="max-w-screen-xl mx-auto px-4 md:px-10 py-16"
-      aria-label="Skills section"
+      ref={ref}
+      className="relative w-full bg-neutral-950 text-gray-100 py-24 px-6 md:px-12"
     >
-      <div className="mb-12 text-center">
-        <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight">
-          <span className="bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-indigo-600">
-            MY SKILL SET
-          </span>
+      <div
+        className={`transition-all duration-1000 ${
+          visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+        }`}
+      >
+        <h2 className="text-center text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+          Technical Skills
         </h2>
-        <p className="mt-3 text-base-content/70 max-w-2xl mx-auto">
-          Technologies and tools I use to build performant web applications and admin dashboards.
+        <p className="text-center text-gray-400 mt-3 mb-12 max-w-2xl mx-auto">
+          Technologies and tools I use to build fast, scalable, and reliable
+          web applications.
         </p>
-      </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6">
-        {skills.map((skill, i) => (
-          <article
-            key={i}
-            className={`relative flex flex-col items-center text-center rounded-2xl p-5 backdrop-blur-sm border border-base-300 shadow-lg transition-all duration-500 transform-gpu
-              ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}
-              hover:-translate-y-2 hover:shadow-xl hover:border-primary/30 focus:outline-none focus:ring-2 focus:ring-primary/50`}
-            style={{ transitionDelay: isVisible ? `${i * 60}ms` : '0ms' }}
-            tabIndex={0}
-            aria-labelledby={`skill-name-${i}`}
-            role="article"
-          >
-            {/* Icon container with fallback */}
-            <div className="flex items-center justify-center h-20 w-20 rounded-xl bg-base-200 border border-base-300 shadow-sm">
-              {skill.icon ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10 max-w-6xl mx-auto">
+          {skills.map((skill, i) => (
+            <div
+              key={i}
+              style={{ transitionDelay: `${i * 70}ms` }}
+              className={`group relative border border-gray-800 rounded-2xl p-6 bg-neutral-900 hover:bg-neutral-800 shadow-md transition-all duration-500 hover:-translate-y-2 hover:shadow-cyan-500/20`}
+            >
+              {/* Icon */}
+              <div className="flex items-center justify-center h-16 w-16 mx-auto bg-neutral-800 rounded-xl border border-gray-700 shadow-inner">
                 <img
                   src={skill.icon}
-                  alt=""
-                  className="h-12 w-12 object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = 'none';
-                    const fallback = e.currentTarget.nextElementSibling;
-                    if (fallback) fallback.classList.remove('hidden');
-                  }}
+                  alt={skill.name}
+                  className="h-10 w-10 object-contain"
+                  onError={(e) => (e.currentTarget.style.display = "none")}
                 />
-              ) : null}
-              <span className="hidden text-xl font-bold text-base-content">
-                {skill.name.charAt(0)}
-              </span>
+              </div>
+
+              {/* Skill Name */}
+              <h3 className="text-lg font-semibold text-center mt-4 group-hover:text-cyan-400 transition-all">
+                {skill.name}
+              </h3>
+
+              {/* Type Label */}
+              <div
+                className={`mt-2 text-xs font-medium text-center text-white px-3 py-1 rounded-full ${colorMap[skill.type]} w-fit mx-auto`}
+              >
+                {skill.type}
+              </div>
+
+              {/* Description */}
+              <p className="text-gray-400 text-sm text-center mt-3 leading-relaxed">
+                {getSkillDescription(skill.name)}
+              </p>
+
+              {/* Gradient underline */}
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 group-hover:w-2/3 h-[2px] bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-500 rounded-full" />
             </div>
-
-            {/* Skill name */}
-            <h3 id={`skill-name-${i}`} className="mt-4 text-sm md:text-base font-semibold text-base-content">
-              {skill.name}
-            </h3>
-
-            {/* Type badge using DaisyUI semantic colors */}
-            <span
-              className={`mt-2 badge ${typeClasses[skill.type] ?? typeClasses.default} text-xs font-medium`}
-              aria-hidden="true"
-            >
-              {skill.type || 'General'}
-            </span>
-
-            {/* Description */}
-            <p className="mt-3 text-xs text-base-content/70 min-h-[36px] px-1">
-              {getSkillDesc(skill.name)}
-            </p>
-
-            {/* Decorative accent (subtle glow in dark mode) */}
-            <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 h-0.5 rounded-full bg-gradient-to-r from-primary to-secondary opacity-60" />
-          </article>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );
+}
+
+function getSkillDescription(name) {
+  const desc = {
+    HTML: "Crafting clean, semantic web structures.",
+    CSS: "Building responsive and modern layouts.",
+    JavaScript: "Bringing interactivity and logic to the browser.",
+    "React.js": "Component-driven front-end architecture.",
+    "Node.js": "Efficient backend with event-driven design.",
+    "Express.js": "RESTful APIs and middleware handling.",
+    MongoDB: "Flexible NoSQL database for scalable apps.",
+    "PostgreSQL / Prisma ORM":
+      "Structured data management with type-safe ORM.",
+    GitHub: "Version control and team collaboration.",
+  };
+  return desc[name] || "Experienced in using this technology.";
 }

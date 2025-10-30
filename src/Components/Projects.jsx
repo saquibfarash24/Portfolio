@@ -7,7 +7,7 @@ const projects = [
 
   {
     id: "jewel",
-    title: "JEWELRY SHOP MANAGEMENT SYSTEM",
+    title: "JEWELRY SHOP",
     description:
       "Developed secure backend APIs for admin-driven school operations, including class management, attendance tracking, and student records. Implemented RBAC, optimized PostgreSQL queries, and integrated Excel/PDF export functionality.",
     image: "/j2.jpg",
@@ -16,7 +16,7 @@ const projects = [
   },
   {
     id: "school",
-    title: "SCHOOL MANAGEMENT",
+    title: "SCHOOL",
     description:
     "Engineered backend services for a jewelry store platform with authentication, product management, and payment integration. Designed RESTful APIs, managed database schemas, and optimized checkout flow using Stripe.",
     image: "/schoolimg.jpg",

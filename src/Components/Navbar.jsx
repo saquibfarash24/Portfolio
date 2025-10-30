@@ -17,7 +17,8 @@ const navItems = [
   { id: 2, text: "About", path: "#about", icon: <FiUser /> },
   { id: 3, text: "My Skills", path: "#skills", icon: <FiCode /> },
   { id: 4, text: "My Projects", path: "#projects", icon: <FiBriefcase /> },
-  { id: 5, text: "Contact", path: "#contact", icon: <FiMail /> },
+  { id: 5, text: "Work Experience", path: "#exp", icon: <FiBriefcase /> },
+  { id: 6, text: "Contact", path: "#contact", icon: <FiMail /> },
 ];
 
 const THEME_KEY = "site-theme";
