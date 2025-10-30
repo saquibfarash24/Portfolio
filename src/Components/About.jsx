@@ -340,8 +340,12 @@ As a backend developer, I specialize in turning business logic into reliable API
           <h3 className="text-lg font-semibold mb-3"><FaGraduationCap className="inline mr-2" />Education</h3>
           <div className="text-sm text-base-content/80 space-y-3">
             <div>
-              <div className="font-medium">BCA / MCA</div>
-              <div className="text-xs text-base-content/60">Shivaji University, Kolhapur· 2018-2024</div>
+              <div className="font-medium"> MCA</div>
+              <div className="text-xs text-base-content/60">Shivaji University, Kolhapur - 2024</div>
+            </div>
+              <div>
+              <div className="font-medium">BCA</div>
+              <div className="text-xs text-base-content/60">Solapur University - 2022</div>
             </div>
           </div>
         </div>
